@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devanshu Bharti - Data Scientist</title>
+    
+    <!-- Devicon for Skill Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -12,14 +16,43 @@
         }
 
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #151515;
-            --text-primary: #e0e0e0;
-            --text-secondary: #a0a0a0;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
-            --border: #2a2a2a;
+            /* Light Mode Colors - Better Readability */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-card: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --accent-light: #dbeafe;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+            
+            /* Spacing */
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-xxl: 64px;
+        }
+
+        /* Dark Mode Colors - WCAG Compliant */
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent: #60a5fa;
+            --accent-hover: #3b82f6;
+            --accent-light: #1e3a8a;
+            --border: #334155;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
         }
 
         body {
@@ -28,40 +61,108 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: min(1100px, 90vw);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 clamp(16px, 4vw, 24px);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            z-index: 102;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            padding: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .theme-toggle input {
+            display: none;
+        }
+
+        .toggle-slider {
+            width: 56px;
+            height: 28px;
+            background: var(--border);
+            border-radius: 50px;
+            position: relative;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle input:checked + .toggle-slider {
+            background: var(--accent);
+        }
+
+        .theme-toggle input:checked + .toggle-slider::before {
+            transform: translateX(28px);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            transition: opacity 0.3s ease;
         }
 
         /* Sidebar Navigation */
         .sidebar {
             position: fixed;
-            right: 48px;
+            right: clamp(24px, 4vw, 48px);
             top: 50%;
             transform: translateY(-50%);
-            z-index: 1000;
+            z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: clamp(12px, 2vw, 16px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .sidebar-btn {
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             color: var(--text-secondary);
-            padding: 12px 20px;
+            padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2vw, 20px);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+            font-weight: 600;
             transition: all 0.3s ease;
             text-align: left;
-            min-width: 140px;
+            min-width: clamp(120px, 15vw, 140px);
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px var(--shadow);
         }
 
         .sidebar-btn::before {
@@ -70,23 +171,29 @@
             left: 0;
             top: 0;
             height: 100%;
-            width: 3px;
+            width: 4px;
             background: var(--accent);
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
 
         .sidebar-btn:hover {
-            background: var(--bg-secondary);
+            background: var(--accent-light);
             border-color: var(--accent);
             color: var(--accent);
             transform: translateX(-8px);
+            box-shadow: 0 4px 8px var(--shadow-hover);
+        }
+
+        .sidebar-btn:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         .sidebar-btn.active {
             border-color: var(--accent);
             color: var(--accent);
-            background: var(--bg-secondary);
+            background: var(--accent-light);
         }
 
         .sidebar-btn.active::before {
@@ -96,57 +203,81 @@
         /* Header */
         header {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            padding: var(--spacing-md);
         }
 
         .header-content h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -2px;
+            font-size: clamp(2rem, 6vw + 1rem, 5rem);
+            font-weight: 800;
+            margin-bottom: clamp(12px, 2vh, 16px);
+            letter-spacing: clamp(-1px, -0.2vw, -2px);
+            word-wrap: break-word;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .header-content .title {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--accent);
-            font-weight: 300;
-            margin-bottom: 48px;
-            letter-spacing: 2px;
+            font-size: clamp(1rem, 2vw + 0.5rem, 1.8rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: clamp(32px, 5vh, 48px);
+            letter-spacing: clamp(2px, 0.3vw, 4px);
+            text-transform: uppercase;
         }
 
         .contact-links {
             display: flex;
-            gap: 32px;
+            gap: clamp(16px, 3vw, 24px);
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 48px;
+            margin-top: clamp(32px, 5vh, 48px);
+            padding: 0 var(--spacing-sm);
         }
 
         .contact-links a {
-            color: var(--text-secondary);
+            background: var(--bg-card);
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            font-weight: 600;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-xs);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+            box-shadow: 0 2px 4px var(--shadow);
         }
 
         .contact-links a:hover {
-            color: var(--accent);
+            background: var(--accent);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px var(--shadow-hover);
+            border-color: var(--accent);
+        }
+
+        .contact-links a:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
+            bottom: clamp(20px, 5vh, 40px);
             left: 50%;
             transform: translateX(-50%);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-size: clamp(0.75rem, 1.5vw, 0.85rem);
             animation: bounce 2s infinite;
         }
 
@@ -158,95 +289,117 @@
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 1001;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            z-index: 101;
             display: none;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             color: var(--text-primary);
-            padding: 12px 16px;
+            padding: clamp(10px, 2vw, 12px) clamp(14px, 3vw, 16px);
             border-radius: 8px;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         /* Sections */
         section {
-            padding: 120px 0;
+            padding: clamp(60px, 10vh, 120px) 0;
             border-top: 1px solid var(--border);
         }
 
         .section-label {
             color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 16px;
+            letter-spacing: clamp(2px, 0.3vw, 3px);
+            margin-bottom: clamp(12px, 2vh, 16px);
         }
 
         .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 64px;
-            letter-spacing: -1px;
+            font-size: clamp(1.75rem, 4vw + 0.5rem, 3rem);
+            font-weight: 800;
+            margin-bottom: clamp(40px, 6vh, 64px);
+            letter-spacing: clamp(-0.5px, -0.1vw, -1px);
+            color: var(--text-primary);
         }
 
-        /* About */
+        /* About Section */
         .about-text {
-            font-size: 1.15rem;
+            font-size: clamp(1rem, 2vw, 1.15rem);
             line-height: 1.8;
             color: var(--text-secondary);
             max-width: 800px;
         }
 
-        /* Experience & Projects */
+        /* Timeline Items */
         .timeline-item {
-            margin-bottom: 64px;
-            padding-left: 32px;
-            border-left: 2px solid var(--border);
+            margin-bottom: clamp(48px, 8vh, 64px);
+            padding-left: clamp(20px, 4vw, 32px);
+            border-left: 3px solid var(--border);
             position: relative;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -6px;
-            top: 0;
-            width: 10px;
-            height: 10px;
+            left: -8px;
+            top: 4px;
+            width: 13px;
+            height: 13px;
             background: var(--accent);
             border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px var(--border);
         }
 
         .timeline-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: var(--spacing-xs);
             color: var(--text-primary);
+            line-height: 1.3;
+            font-weight: 700;
         }
 
         .timeline-meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
+            color: var(--text-muted);
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
         }
 
         .timeline-meta span {
             color: var(--accent);
+            font-weight: 600;
         }
 
         .timeline-item ul {
             list-style: none;
-            margin-top: 16px;
+            margin-top: var(--spacing-sm);
         }
 
         .timeline-item li {
             color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 24px;
+            margin-bottom: clamp(10px, 2vh, 12px);
+            padding-left: clamp(20px, 4vw, 24px);
             position: relative;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         .timeline-item li::before {
@@ -254,142 +407,150 @@
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-weight: bold;
         }
 
-        /* Skills */
+        /* Skills Grid with Icons */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(20px, 3vw, 28px);
         }
 
         .skill-card {
             background: var(--bg-card);
-            padding: 32px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: border-color 0.3s, transform 0.3s;
+            padding: clamp(28px, 5vw, 36px);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow);
         }
 
         .skill-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px var(--shadow-hover);
+        }
+
+        .skill-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
         }
 
         .skill-card h3 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 16px;
+            color: var(--text-primary);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .skill-icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .skill-icon-wrapper i {
+            font-size: 28px;
+        }
+
+        .skill-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(12px, 2vw, 16px);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .skill-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-icon-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .skill-icon-item i {
+            font-size: clamp(36px, 6vw, 48px);
+        }
+
+        .skill-icon-item span {
+            font-size: clamp(0.7rem, 1.2vw, 0.75rem);
+            color: var(--text-muted);
             font-weight: 600;
         }
 
         .skill-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: clamp(0.875rem, 1.5vw, 0.95rem);
             line-height: 1.6;
+            margin: 0;
         }
 
-        /* Education */
+        /* Education Cards */
         .education-card {
             background: var(--bg-card);
-            padding: 32px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            margin-bottom: 24px;
+            padding: clamp(28px, 4vw, 36px);
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            margin-bottom: clamp(20px, 3vh, 28px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .education-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--shadow-hover);
         }
 
         .education-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: var(--spacing-xs);
             color: var(--text-primary);
+            line-height: 1.3;
+            font-weight: 700;
         }
 
         .education-meta {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
+            color: var(--text-muted);
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.5;
         }
 
         .education-meta span {
             color: var(--accent);
+            font-weight: 600;
         }
 
         .education-card p {
             color: var(--text-secondary);
             line-height: 1.6;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
 
         /* Footer */
         footer {
-            padding: 64px 0;
+            padding: clamp(48px, 8vh, 64px) 0;
             text-align: center;
             border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
         }
 
         footer p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 1024px) {
-            .sidebar {
-                right: 24px;
-            }
-
-            .sidebar-btn {
-                min-width: 120px;
-                padding: 10px 16px;
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .sidebar {
-                position: fixed;
-                top: 80px;
-                right: 0;
-                left: 0;
-                transform: translateX(100%);
-                flex-direction: column;
-                gap: 0;
-                background: var(--bg-secondary);
-                padding: 24px;
-                border-left: 1px solid var(--border);
-                transition: transform 0.3s ease;
-                height: calc(100vh - 80px);
-                overflow-y: auto;
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .sidebar-btn {
-                width: 100%;
-                min-width: 100%;
-                margin-bottom: 12px;
-            }
-
-            .contact-links {
-                gap: 16px;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .timeline-item {
-                padding-left: 24px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+            color: var(--text-muted);
+            font-size: clamp(0.85rem, 1.5vw, 0.9rem);
         }
 
         /* Smooth reveal animation */
@@ -403,19 +564,162 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Enhanced Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .sidebar {
+                right: clamp(16px, 3vw, 24px);
+                gap: clamp(12px, 2vw, 16px);
+            }
+
+            .theme-toggle {
+                top: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .theme-toggle {
+                top: var(--spacing-md);
+                right: 80px;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: min(300px, 80vw);
+                height: 100vh;
+                height: 100dvh;
+                transform: translateX(100%);
+                flex-direction: column;
+                gap: 0;
+                background: var(--bg-secondary);
+                padding: var(--spacing-xxl) var(--spacing-md) var(--spacing-md);
+                border-left: 1px solid var(--border);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+                box-shadow: -8px 0 24px var(--shadow);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-btn {
+                width: 100%;
+                min-width: 100%;
+                margin-bottom: var(--spacing-sm);
+                text-align: center;
+                padding: clamp(12px, 3vw, 14px) var(--spacing-md);
+            }
+
+            .sidebar-btn:hover {
+                transform: translateX(0) scale(1.02);
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+
+            .contact-links a {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            section {
+                padding: clamp(48px, 8vh, 80px) 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: clamp(1.75rem, 10vw, 2.5rem);
+            }
+
+            .skill-icons {
+                justify-content: center;
+            }
+
+            .theme-toggle {
+                padding: 6px;
+                scale: 0.9;
+            }
+        }
+
+        /* Landscape orientation on mobile */
+        @media (max-height: 600px) and (orientation: landscape) {
+            header {
+                min-height: auto;
+                padding: clamp(40px, 10vh, 60px) 0;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .scroll-indicator {
+                animation: none;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .sidebar,
+            .mobile-menu-toggle,
+            .theme-toggle,
+            .scroll-indicator {
+                display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <span class="theme-icon">☀️</span>
+        <label>
+            <input type="checkbox" id="themeToggle">
+            <span class="toggle-slider"></span>
+        </label>
+        <span class="theme-icon">🌙</span>
+    </div>
+
     <!-- Mobile Menu Toggle -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">☰</button>
 
     <!-- Sidebar Navigation -->
-    <nav class="sidebar" id="sidebar">
-        <button class="sidebar-btn" data-target="about">About</button>
-        <button class="sidebar-btn" data-target="experience">Experience</button>
-        <button class="sidebar-btn" data-target="projects">Projects</button>
-        <button class="sidebar-btn" data-target="skills">Skills</button>
-        <button class="sidebar-btn" data-target="education">Education</button>
+    <nav class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <button class="sidebar-btn" data-target="about" aria-label="Navigate to About section">About</button>
+        <button class="sidebar-btn" data-target="experience" aria-label="Navigate to Experience section">Experience</button>
+        <button class="sidebar-btn" data-target="projects" aria-label="Navigate to Projects section">Projects</button>
+        <button class="sidebar-btn" data-target="skills" aria-label="Navigate to Skills section">Skills</button>
+        <button class="sidebar-btn" data-target="education" aria-label="Navigate to Education section">Education</button>
     </nav>
 
     <!-- Header -->
@@ -425,13 +729,13 @@
                 <h1>DEVANSHU BHARTI</h1>
                 <p class="title">DATA SCIENTIST</p>
                 <div class="contact-links">
-                    <a href="tel:9811146645">📞 9811146645</a>
-                    <a href="mailto:devansh.bharti46@gmail.com">✉ Email</a>
-                    <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank">💼 LinkedIn</a>
-                    <a href="https://github.com/devan-b46" target="_blank">⚡ GitHub</a>
+                    <a href="tel:9811146645" aria-label="Call 9811146645">📞 9811146645</a>
+                    <a href="mailto:devansh.bharti46@gmail.com" aria-label="Email Devanshu">✉ Email</a>
+                    <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">💼 LinkedIn</a>
+                    <a href="https://github.com/devan-b46" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
                 </div>
             </div>
-            <div class="scroll-indicator">↓ Scroll</div>
+            <div class="scroll-indicator" aria-hidden="true">↓ Scroll</div>
         </div>
     </header>
 
@@ -519,7 +823,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills with Icons -->
     <section id="skills">
         <div class="container">
             <div class="section-label reveal">EXPERTISE</div>
@@ -527,28 +831,135 @@
             
             <div class="skills-grid">
                 <div class="skill-card reveal">
-                    <h3>Programming & Databases</h3>
-                    <p>Python (Numpy, Pandas, Matplotlib, Seaborn, Plotly, Scikit-learn, Keras), SQL (MS SQL Server, MySQL, PostgreSQL, DBeaver)</p>
+                    <div class="skill-card-header">
+                        <div class="skill-icon-wrapper">
+                            <i class="devicon-python-plain colored"></i>
+                        </div>
+                        <h3>Programming & Databases</h3>
+                    </div>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item">
+                            <i class="devicon-python-plain colored"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-numpy-original colored"></i>
+                            <span>NumPy</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-pandas-original colored"></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-matplotlib-plain colored"></i>
+                            <span>Matplotlib</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-scikitlearn-plain colored"></i>
+                            <span>Scikit-learn</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-mysql-plain colored"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-postgresql-plain colored"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-microsoftsqlserver-plain colored"></i>
+                            <span>MS SQL</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <h3>Machine Learning</h3>
-                    <p>Predictive Modelling, Clustering (KMeans, DBScan), NLP (spaCy, NLTK, VADER), Scikit-learn, XGBoost, TensorFlow, PyTorch</p>
+                    <div class="skill-card-header">
+                        <div class="skill-icon-wrapper">
+                            <i class="devicon-tensorflow-original colored"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                    </div>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item">
+                            <i class="devicon-tensorflow-original colored"></i>
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-pytorch-original colored"></i>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-keras-plain colored"></i>
+                            <span>Keras</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-scikitlearn-plain colored"></i>
+                            <span>Scikit-learn</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 12px;">Predictive Modelling, Clustering (KMeans, DBScan), NLP (spaCy, NLTK, VADER), XGBoost</p>
                 </div>
 
                 <div class="skill-card reveal">
-                    <h3>BI & Visualization</h3>
-                    <p>Microsoft Power BI (Power Query, DAX, Measures, DirectQuery), Excel (Advanced Functions, Pivot Tables), Streamlit</p>
+                    <div class="skill-card-header">
+                        <div class="skill-icon-wrapper">
+                            <span style="font-size: 28px;">📊</span>
+                        </div>
+                        <h3>BI & Visualization</h3>
+                    </div>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item">
+                            <span style="font-size: 48px;">📊</span>
+                            <span>Power BI</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <span style="font-size: 48px;">📈</span>
+                            <span>Excel</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-streamlit-plain colored"></i>
+                            <span>Streamlit</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 12px;">Power Query, DAX, Measures, DirectQuery, Advanced Functions, Pivot Tables</p>
                 </div>
 
                 <div class="skill-card reveal">
-                    <h3>Version Control</h3>
-                    <p>Git, GitHub, Bash</p>
+                    <div class="skill-card-header">
+                        <div class="skill-icon-wrapper">
+                            <i class="devicon-git-plain colored"></i>
+                        </div>
+                        <h3>Version Control & Tools</h3>
+                    </div>
+                    <div class="skill-icons">
+                        <div class="skill-icon-item">
+                            <i class="devicon-git-plain colored"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-github-original"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-bash-plain colored"></i>
+                            <span>Bash</span>
+                        </div>
+                        <div class="skill-icon-item">
+                            <i class="devicon-vscode-plain colored"></i>
+                            <span>VS Code</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="skill-card reveal">
-                    <h3>Soft Skills</h3>
-                    <p>Problem-Solving, Communication, Teamwork, Adaptability, Continuous Learning</p>
+                    <div class="skill-card-header">
+                        <div class="skill-icon-wrapper">
+                            <span style="font-size: 28px;">🎯</span>
+                        </div>
+                        <h3>Soft Skills</h3>
+                    </div>
+                    <p>Problem-Solving • Communication • Teamwork • Adaptability • Continuous Learning • Critical Thinking • Data Storytelling</p>
                 </div>
             </div>
         </div>
@@ -577,14 +988,38 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2025 Devanshu Bharti • Based in Noida, India</p>
+            <p>© 2025 Devanshu Bharti • Based in Noida, India • Built with passion 💙</p>
         </div>
     </footer>
 
     <script>
-        // Sidebar button functionality
+        // Theme Toggle Functionality with localStorage
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+        
+        if (currentTheme === 'dark') {
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Sidebar and Navigation
         const sidebarButtons = document.querySelectorAll('.sidebar-btn');
         const sections = document.querySelectorAll('section');
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 
         sidebarButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -594,7 +1029,6 @@
                 if (targetSection) {
                     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     
-                    // Close mobile menu if open
                     if (window.innerWidth <= 768) {
                         sidebar.classList.remove('active');
                         mobileMenuToggle.textContent = '☰';
@@ -604,54 +1038,101 @@
         });
 
         // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const sidebar = document.getElementById('sidebar');
-
         mobileMenuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             mobileMenuToggle.textContent = sidebar.classList.contains('active') ? '✕' : '☰';
+            mobileMenuToggle.setAttribute('aria-expanded', sidebar.classList.contains('active'));
         });
 
-        // Active section highlighting
-        const highlightActiveSection = () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                sidebar.classList.contains('active') && 
+                !sidebar.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
+                sidebar.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
 
-            sidebarButtons.forEach(button => {
-                button.classList.remove('active');
-                if (button.getAttribute('data-target') === current) {
-                    button.classList.add('active');
-                }
-            });
+        // Active section highlighting with throttle
+        let ticking = false;
+        const highlightActiveSection = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    let current = '';
+                    
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        
+                        if (window.pageYOffset >= sectionTop - 200) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    sidebarButtons.forEach(button => {
+                        button.classList.remove('active');
+                        if (button.getAttribute('data-target') === current) {
+                            button.classList.add('active');
+                        }
+                    });
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', highlightActiveSection);
-        highlightActiveSection(); // Initial check
+        window.addEventListener('scroll', highlightActiveSection, { passive: true });
+        highlightActiveSection();
 
         // Reveal animation on scroll
         const reveals = document.querySelectorAll('.reveal');
+        let revealTicking = false;
 
         const revealOnScroll = () => {
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('active');
-                }
-            });
+            if (!revealTicking) {
+                window.requestAnimationFrame(() => {
+                    reveals.forEach(element => {
+                        const elementTop = element.getBoundingClientRect().top;
+                        const elementVisible = 150;
+                        
+                        if (elementTop < window.innerHeight - elementVisible) {
+                            element.classList.add('active');
+                        }
+                    });
+                    revealTicking = false;
+                });
+                revealTicking = true;
+            }
         };
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        revealOnScroll();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.focus();
+            }
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    mobileMenuToggle.textContent = '☰';
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            }, 250);
+        });
     </script>
 </body>
 </html>
