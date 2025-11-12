@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devanshu Bharti - Data Scientist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #151515;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #00ff88;
+            --accent-dim: #00cc6a;
+            --border: #2a2a2a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -2px;
+        }
+
+        .header-content .title {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--accent);
+            font-weight: 300;
+            margin-bottom: 48px;
+            letter-spacing: 2px;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .contact-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        nav.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 64px;
+            letter-spacing: -1px;
+        }
+
+        /* About */
+        .about-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 800px;
+        }
+
+        /* Experience & Projects */
+        .timeline-item {
+            margin-bottom: 64px;
+            padding-left: 32px;
+            border-left: 2px solid var(--border);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .timeline-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .timeline-meta span {
+            color: var(--accent);
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .timeline-item li {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .timeline-item li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Education */
+        .education-card {
+            background: var(--bg-card);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .education-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .education-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .education-meta span {
+            color: var(--accent);
+        }
+
+        .education-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 57px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                gap: 0;
+                padding: 24px;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.3s, opacity 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links a {
+                padding: 12px 0;
+                font-size: 1.1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .contact-links {
+                gap: 16px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .timeline-item {
+                padding-left: 24px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-logo">DB</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>DEVANSHU BHARTI</h1>
+                <p class="title">DATA SCIENTIST</p>
+                <div class="contact-links">
+                    <a href="tel:9811146645">📞 9811146645</a>
+                    <a href="mailto:devansh.bharti46@gmail.com">✉ Email</a>
+                    <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank">💼 LinkedIn</a>
+                    <a href="https://github.com/devan-b46" target="_blank">⚡ GitHub</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">↓ Scroll</div>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-label reveal">ABOUT ME</div>
+            <h2 class="section-title reveal">Profile</h2>
+            <p class="about-text reveal">
+                Analytical professional with 2 years of experience, now specializing in Data Science. Armed with an IIT Guwahati-certified PG Diploma and hands-on expertise in Python, Machine Learning, SQL, and Power BI. Eager to apply predictive modeling and data visualization skills to solve complex business problems and drive data-informed strategies in a challenging Data Scientist role.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-label reveal">CAREER</div>
+            <h2 class="section-title reveal">Experience</h2>
+            
+            <div class="timeline-item reveal">
+                <h3>Data Engineer Intern</h3>
+                <p class="timeline-meta"><span>Star Agribazaar Technology Pvt. Ltd.</span> • Noida, UP • August 2025 - Present</p>
+                <ul>
+                    <li>Developed and maintained real-time production dashboards in Power BI with DAX, DirectQuery, and Power Query, improving operational visibility by 25%</li>
+                    <li>Managed data pipelines connecting Amazon Redshift, SQLite, and Python scripts for continuous ETL data flow and model updates</li>
+                    <li>Supported LSTM-based yield prediction models and automated model retraining pipelines, optimizing forecast accuracy by 12%</li>
+                    <li>Collaborated with business and engineering teams to ensure data governance, transformation logic, and database optimization</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+                <h3>Research Analyst (Process Associate)</h3>
+                <p class="timeline-meta"><span>Suntec Web Services Pvt. Ltd.</span> • New Delhi • 2024 - 2025</p>
+                <ul>
+                    <li>Conducted in-depth market research to assess industry trends, competitive landscapes, and customer behaviors</li>
+                    <li>Provided strategic recommendations to inform business decisions and drive growth</li>
+                    <li>Prepared comprehensive reports and presentations to communicate findings to company tool (Igloo)</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+                <h3>Assistant Manager</h3>
+                <p class="timeline-meta"><span>Reliance Jio Incomm. Ltd.</span> • New Delhi • 2018 - 2019</p>
+                <ul>
+                    <li>Leveraged MS Excel to collect, organize, and manage sales and operational data, improving data accuracy for analysis by 15%</li>
+                    <li>Developed and maintained interactive dashboards in Power BI and Excel to visualize key performance indicators, reducing report generation time by 30%</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-label reveal">PORTFOLIO</div>
+            <h2 class="section-title reveal">Projects</h2>
+            
+            <div class="timeline-item reveal">
+                <h3>NLP for Customer Insights</h3>
+                <p class="timeline-meta"><span>NLP, spaCy, NLTK, VADER</span> • June 2025</p>
+                <ul>
+                    <li>Comprehensive case study on Women's E-Commerce Clothing Reviews, focusing on Sentiment Analysis and Predictive Modeling using Natural Language Processing</li>
+                    <li>Conducted comparative sentiment analysis using TFIDFVectorizer, Logistic Regression, WordCloud, and NLTK's VADER</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+                <h3>E-Commerce Sales & Promotion</h3>
+                <p class="timeline-meta"><span>PowerBI (DAX, Power Query, Measures)</span> • July 2024</p>
+                <ul>
+                    <li>Developed an interactive analytical dashboard to deep-dive into customer behavior data from a leading e-commerce platform</li>
+                    <li>Unearthed key insights on pricing, promotions, and recommendations, boosting data usability and driving potential revenue growth</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item reveal">
+                <h3>Credit Card Predictions</h3>
+                <p class="timeline-meta"><span>Python, Machine Learning, Scikit-learn</span> • April 2024</p>
+                <ul>
+                    <li>Analyzed credit card transaction data and customer demographics to predict future spending patterns</li>
+                    <li>Built a model to segment customers based on spending behavior for targeted marketing campaigns</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-label reveal">EXPERTISE</div>
+            <h2 class="section-title reveal">Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <h3>Programming & Databases</h3>
+                    <p>Python (Numpy, Pandas, Matplotlib, Seaborn, Plotly, Scikit-learn, Keras), SQL (MS SQL Server, MySQL, PostgreSQL, DBeaver)</p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>Machine Learning</h3>
+                    <p>Predictive Modelling, Clustering (KMeans, DBScan), NLP (spaCy, NLTK, VADER), Scikit-learn, XGBoost, TensorFlow, PyTorch</p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>BI & Visualization</h3>
+                    <p>Microsoft Power BI (Power Query, DAX, Measures, DirectQuery), Excel (Advanced Functions, Pivot Tables), Streamlit</p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>Version Control</h3>
+                    <p>Git, GitHub, Bash</p>
+                </div>
+
+                <div class="skill-card reveal">
+                    <h3>Soft Skills</h3>
+                    <p>Problem-Solving, Communication, Teamwork, Adaptability, Continuous Learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <div class="container">
+            <div class="section-label reveal">ACADEMIC</div>
+            <h2 class="section-title reveal">Education</h2>
+            
+            <div class="education-card reveal">
+                <h3>PG Diploma in Data Science</h3>
+                <p class="education-meta"><span>AnalytixLabs (EICT IIT Guwahati)</span> • Noida, India • 2023 - 2025</p>
+                <p>Deep Learning, Machine Learning, Python, SQL, Microsoft Power BI, Microsoft Excel</p>
+            </div>
+
+            <div class="education-card reveal">
+                <h3>B.Tech in Electronics & Communication Engineering</h3>
+                <p class="education-meta"><span>Maharaja Agrasen Institute of Technology, GGSIPU</span> • Delhi, India • 2017</p>
+                <p>Strong foundation in Networks, Communications and Engineering Mathematics (Advanced Statistics)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Devanshu Bharti • Based in Noida, India</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.textContent = '☰';
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Show navbar on scroll
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 300) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Reveal animation on scroll
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+</body>
+</html>
