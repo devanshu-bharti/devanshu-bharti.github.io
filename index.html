@@ -36,6 +36,63 @@
             padding: 0 24px;
         }
 
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            right: 48px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: left;
+            min-width: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-btn::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateX(-8px);
+        }
+
+        .sidebar-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--bg-secondary);
+        }
+
+        .sidebar-btn.active::before {
+            transform: scaleY(1);
+        }
+
         /* Header */
         header {
             min-height: 100vh;
@@ -98,62 +155,20 @@
             50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        /* Navigation */
-        nav {
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-            opacity: 0;
-            transform: translateY(-100%);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-
-        nav.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-        }
-
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .menu-toggle {
+            top: 24px;
+            right: 24px;
+            z-index: 1001;
             display: none;
-            background: none;
-            border: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             color: var(--text-primary);
-            font-size: 1.5rem;
+            padding: 12px 16px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 1.2rem;
         }
 
         /* Sections */
@@ -316,35 +331,48 @@
             font-size: 0.9rem;
         }
 
-        /* Mobile Menu */
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                right: 24px;
+            }
+
+            .sidebar-btn {
+                min-width: 120px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
                 position: fixed;
-                top: 57px;
+                top: 80px;
+                right: 0;
                 left: 0;
-                width: 100%;
-                background: var(--bg-secondary);
+                transform: translateX(100%);
                 flex-direction: column;
                 gap: 0;
+                background: var(--bg-secondary);
                 padding: 24px;
-                border-bottom: 1px solid var(--border);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: transform 0.3s, opacity 0.3s;
+                border-left: 1px solid var(--border);
+                transition: transform 0.3s ease;
+                height: calc(100vh - 80px);
+                overflow-y: auto;
             }
 
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
+            .sidebar.active {
+                transform: translateX(0);
             }
 
-            .nav-links a {
-                padding: 12px 0;
-                font-size: 1.1rem;
-            }
-
-            .menu-toggle {
-                display: block;
+            .sidebar-btn {
+                width: 100%;
+                min-width: 100%;
+                margin-bottom: 12px;
             }
 
             .contact-links {
@@ -378,23 +406,20 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="container">
-            <div class="nav-logo">DB</div>
-            <button class="menu-toggle" id="menuToggle">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-            </ul>
-        </div>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <button class="sidebar-btn" data-target="about">About</button>
+        <button class="sidebar-btn" data-target="experience">Experience</button>
+        <button class="sidebar-btn" data-target="projects">Projects</button>
+        <button class="sidebar-btn" data-target="skills">Skills</button>
+        <button class="sidebar-btn" data-target="education">Education</button>
     </nav>
 
     <!-- Header -->
-    <header>
+    <header id="home">
         <div class="container">
             <div class="header-content">
                 <h1>DEVANSHU BHARTI</h1>
@@ -557,49 +582,59 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
+        // Sidebar button functionality
+        const sidebarButtons = document.querySelectorAll('.sidebar-btn');
+        const sections = document.querySelectorAll('section');
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.textContent = '☰';
-            });
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        sidebarButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                        mobileMenuToggle.textContent = '☰';
+                    }
                 }
             });
         });
 
-        // Show navbar on scroll
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const sidebar = document.getElementById('sidebar');
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 300) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-            
-            lastScroll = currentScroll;
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mobileMenuToggle.textContent = sidebar.classList.contains('active') ? '✕' : '☰';
         });
+
+        // Active section highlighting
+        const highlightActiveSection = () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.getAttribute('data-target') === current) {
+                    button.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', highlightActiveSection);
+        highlightActiveSection(); // Initial check
 
         // Reveal animation on scroll
         const reveals = document.querySelectorAll('.reveal');
