@@ -59,7 +59,7 @@
             padding: 0 clamp(16px, 4vw, 24px);
         }
 
-        /* Theme Button - Simple and Clean */
+        /* Theme Button */
         .theme-button {
             position: fixed;
             top: 24px;
@@ -97,7 +97,7 @@
             outline-offset: 3px;
         }
 
-        /* Mobile Menu Toggle - Top Left */
+        /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             position: fixed;
             top: 24px;
@@ -193,7 +193,7 @@
             transform: scaleY(1);
         }
 
-        /* Header */
+        /* Header with Profile Picture */
         header {
             min-height: 100vh;
             min-height: 100dvh;
@@ -203,6 +203,35 @@
             text-align: center;
             position: relative;
             padding: 24px;
+        }
+
+        .profile-picture {
+            width: clamp(120px, 20vw, 180px);
+            height: clamp(120px, 20vw, 180px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            box-shadow: 0 8px 32px var(--shadow-hover);
+            margin-bottom: clamp(24px, 4vh, 32px);
+            transition: all 0.3s ease;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 48px var(--shadow-hover);
+            border-color: var(--accent-hover);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .header-content h1 {
@@ -373,7 +402,7 @@
             font-weight: bold;
         }
 
-        /* Skills Section with Official Logos */
+        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -515,7 +544,7 @@
             transform: translateY(0);
         }
 
-        /* Enhanced Responsive Breakpoints */
+        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .sidebar {
                 right: clamp(16px, 3vw, 24px);
@@ -533,6 +562,12 @@
                 width: 46px;
                 height: 46px;
                 font-size: 1.3rem;
+            }
+
+            .profile-picture {
+                width: clamp(100px, 25vw, 140px);
+                height: clamp(100px, 25vw, 140px);
+                border-width: 4px;
             }
 
             .sidebar {
@@ -602,16 +637,28 @@
                 font-size: 1.2rem;
             }
 
+            .profile-picture {
+                width: 100px;
+                height: 100px;
+                border-width: 3px;
+            }
+
             .skill-badges {
                 justify-content: center;
             }
         }
 
-        /* Landscape orientation on mobile */
+        /* Landscape orientation */
         @media (max-height: 600px) and (orientation: landscape) {
             header {
                 min-height: auto;
                 padding: clamp(40px, 10vh, 60px) 0;
+            }
+
+            .profile-picture {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 16px;
             }
 
             .scroll-indicator {
@@ -619,7 +666,7 @@
             }
         }
 
-        /* Reduced motion support */
+        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -628,6 +675,10 @@
             }
 
             .scroll-indicator {
+                animation: none;
+            }
+
+            .profile-picture {
                 animation: none;
             }
         }
@@ -649,12 +700,12 @@
     </style>
 </head>
 <body>
-    <!-- Theme Switch Button -->
+    <!-- Theme Button -->
     <button id="theme-button" class="theme-button" aria-label="Switch to dark mode">
         ☀️
     </button>
 
-    <!-- Mobile Menu Toggle - Top Left -->
+    <!-- Mobile Menu Toggle -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">☰</button>
 
     <!-- Sidebar Navigation -->
@@ -666,17 +717,27 @@
         <button class="sidebar-btn" data-target="education" aria-label="Navigate to Education section">Education</button>
     </nav>
 
-    <!-- Header -->
+    <!-- Header with Profile Picture -->
     <header id="home">
         <div class="container">
             <div class="header-content">
+                <!-- Profile Picture -->
+                <img src="https://github.com/devanshu-bharti/devanshu-bharti.github.io/blob/main/files/pic.png?raw=true" alt="Devanshu Bharti Profile Picture" class="profile-picture">
+                <!-- 
+                    If you're using GitHub raw URL, replace the src above with:
+                    src="https://github.com/YOUR-USERNAME/YOUR-REPO/raw/main/files/pic.png"
+                    
+                    For example:
+                    src="https://github.com/devan-b46/portfolio/raw/main/files/pic.png"
+                -->
+                
                 <h1>DEVANSHU BHARTI</h1>
                 <p class="title">DATA SCIENTIST</p>
                 <div class="contact-links">
-                    <a href="tel:+91 9811146645" aria-label="Call +91 9811146645">📞 +91 9811146645</a>
+                    <a href="tel:9811146645" aria-label="Call 9811146645">📞 9811146645</a>
                     <a href="mailto:devansh.bharti46@gmail.com" aria-label="Email Devanshu">✉ Email</a>
                     <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">💼 LinkedIn</a>
-                    <a href="https://github.com/devanshu-bharti" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
+                    <a href="https://github.com/devan-b46" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
                 </div>
             </div>
             <div class="scroll-indicator" aria-hidden="true">↓ Scroll</div>
@@ -767,7 +828,7 @@
         </div>
     </section>
 
-    <!-- Skills with Official Logos -->
+    <!-- Skills -->
     <section id="skills">
         <div class="container">
             <div class="section-label reveal">EXPERTISE</div>
@@ -954,11 +1015,9 @@
         const themeButton = document.getElementById('theme-button');
         const html = document.documentElement;
         
-        // Check for saved theme preference or default to 'light'
         let currentTheme = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-theme', currentTheme);
         
-        // Update button icon and label based on current theme
         function updateThemeButton() {
             if (currentTheme === 'dark') {
                 themeButton.textContent = '🌙';
@@ -971,7 +1030,6 @@
         
         updateThemeButton();
 
-        // Toggle theme on button click
         themeButton.addEventListener('click', function() {
             currentTheme = currentTheme === 'light' ? 'dark' : 'light';
             html.setAttribute('data-theme', currentTheme);
@@ -1001,14 +1059,12 @@
             });
         });
 
-        // Mobile menu toggle
         mobileMenuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             mobileMenuToggle.textContent = sidebar.classList.contains('active') ? '✕' : '☰';
             mobileMenuToggle.setAttribute('aria-expanded', sidebar.classList.contains('active'));
         });
 
-        // Close sidebar when clicking outside on mobile
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 768 && 
                 sidebar.classList.contains('active') && 
@@ -1020,7 +1076,6 @@
             }
         });
 
-        // Active section highlighting with throttle
         let ticking = false;
         const highlightActiveSection = () => {
             if (!ticking) {
@@ -1051,7 +1106,6 @@
         window.addEventListener('scroll', highlightActiveSection, { passive: true });
         highlightActiveSection();
 
-        // Reveal animation on scroll
         const reveals = document.querySelectorAll('.reveal');
         let revealTicking = false;
 
@@ -1075,7 +1129,6 @@
         window.addEventListener('scroll', revealOnScroll, { passive: true });
         revealOnScroll();
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
@@ -1085,7 +1138,6 @@
             }
         });
 
-        // Handle window resize
         let resizeTimer;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
