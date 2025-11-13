@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devanshu Bharti - Data Scientist</title>
     
-    <!-- Devicon for Skill Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicon/2.16.0/devicon.min.css">
-    
     <style>
         * {
             margin: 0;
@@ -16,7 +13,7 @@
         }
 
         :root {
-            /* Light Mode Colors - Better Readability */
+            /* Light Mode Colors */
             --bg-primary: #ffffff;
             --bg-secondary: #f8f9fa;
             --bg-card: #ffffff;
@@ -29,17 +26,9 @@
             --border: #e2e8f0;
             --shadow: rgba(0, 0, 0, 0.1);
             --shadow-hover: rgba(0, 0, 0, 0.15);
-            
-            /* Spacing */
-            --spacing-xs: 8px;
-            --spacing-sm: 16px;
-            --spacing-md: 24px;
-            --spacing-lg: 32px;
-            --spacing-xl: 48px;
-            --spacing-xxl: 64px;
         }
 
-        /* Dark Mode Colors - WCAG Compliant */
+        /* Dark Mode Colors */
         [data-theme="dark"] {
             --bg-primary: #0f172a;
             --bg-secondary: #1e293b;
@@ -70,68 +59,72 @@
             padding: 0 clamp(16px, 4vw, 24px);
         }
 
-        /* Theme Toggle */
-        .theme-toggle {
+        /* Theme Button - Simple and Clean */
+        .theme-button {
             position: fixed;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            z-index: 102;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
             background: var(--bg-card);
             border: 2px solid var(--border);
-            border-radius: 50px;
-            padding: 8px;
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: 12px;
             cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow);
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 8px var(--shadow);
-            transition: all 0.3s ease;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px var(--shadow-hover);
+        .theme-button:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 20px var(--shadow-hover);
             border-color: var(--accent);
+            background: var(--accent-light);
         }
 
-        .theme-toggle input {
+        .theme-button:active {
+            transform: scale(0.95);
+        }
+
+        .theme-button:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        /* Mobile Menu Toggle - Top Left */
+        .mobile-menu-toggle {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 1000;
             display: none;
-        }
-
-        .toggle-slider {
-            width: 56px;
-            height: 28px;
-            background: var(--border);
-            border-radius: 50px;
-            position: relative;
-            transition: background 0.3s ease;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            color: var(--text-primary);
+            padding: 10px 14px;
+            border-radius: 8px;
             cursor: pointer;
-        }
-
-        .toggle-slider::before {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: white;
-            top: 3px;
-            left: 3px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .theme-toggle input:checked + .toggle-slider {
-            background: var(--accent);
-        }
-
-        .theme-toggle input:checked + .toggle-slider::before {
-            transform: translateX(28px);
-        }
-
-        .theme-icon {
             font-size: 1.2rem;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .mobile-menu-toggle:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         /* Sidebar Navigation */
@@ -209,7 +202,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding: var(--spacing-md);
+            padding: 24px;
         }
 
         .header-content h1 {
@@ -239,7 +232,7 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-top: clamp(32px, 5vh, 48px);
-            padding: 0 var(--spacing-sm);
+            padding: 0 16px;
         }
 
         .contact-links a {
@@ -251,7 +244,7 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: var(--spacing-xs);
+            gap: 8px;
             padding: 12px 20px;
             border-radius: 8px;
             border: 2px solid var(--border);
@@ -284,36 +277,6 @@
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            position: fixed;
-            top: var(--spacing-md);
-            left: var(--spacing-md);
-            z-index: 101;
-            display: none;
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            color: var(--text-primary);
-            padding: clamp(10px, 2vw, 12px) clamp(14px, 3vw, 16px);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px var(--shadow);
-        }
-
-        .mobile-menu-toggle:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .mobile-menu-toggle:focus {
-            outline: 3px solid var(--accent);
-            outline-offset: 2px;
         }
 
         /* Sections */
@@ -370,7 +333,7 @@
 
         .timeline-item h3 {
             font-size: clamp(1.2rem, 3vw, 1.5rem);
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: 8px;
             color: var(--text-primary);
             line-height: 1.3;
             font-weight: 700;
@@ -379,7 +342,7 @@
         .timeline-meta {
             color: var(--text-muted);
             font-size: clamp(0.85rem, 1.5vw, 0.9rem);
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 16px;
             line-height: 1.5;
         }
 
@@ -390,7 +353,7 @@
 
         .timeline-item ul {
             list-style: none;
-            margin-top: var(--spacing-sm);
+            margin-top: 16px;
         }
 
         .timeline-item li {
@@ -410,14 +373,14 @@
             font-weight: bold;
         }
 
-        /* Skills Grid with Icons */
+        /* Skills Section with Official Logos */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-            gap: clamp(20px, 3vw, 28px);
+            grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+            gap: clamp(24px, 4vw, 32px);
         }
 
-        .skill-card {
+        .skill-category {
             background: var(--bg-card);
             padding: clamp(28px, 5vw, 36px);
             border-radius: 12px;
@@ -426,75 +389,62 @@
             box-shadow: 0 2px 8px var(--shadow);
         }
 
-        .skill-card:hover {
+        .skill-category:hover {
             border-color: var(--accent);
             transform: translateY(-6px);
             box-shadow: 0 8px 24px var(--shadow-hover);
         }
 
-        .skill-card-header {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .skill-card h3 {
+        .skill-category h3 {
             color: var(--text-primary);
-            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
             font-weight: 700;
-            margin: 0;
-        }
-
-        .skill-icon-wrapper {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-light);
-            border-radius: 10px;
+            margin-bottom: 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            gap: 10px;
         }
 
-        .skill-icon-wrapper i {
-            font-size: 28px;
+        .skill-category h3::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
-        .skill-icons {
+        .skill-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: clamp(12px, 2vw, 16px);
-            margin-bottom: var(--spacing-sm);
+            gap: clamp(10px, 2vw, 14px);
+            margin-top: 16px;
         }
 
-        .skill-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
+        .skill-badge {
             transition: transform 0.3s ease;
+            display: inline-block;
+            border-radius: 4px;
+            overflow: hidden;
         }
 
-        .skill-icon-item:hover {
-            transform: translateY(-4px);
+        .skill-badge:hover {
+            transform: translateY(-3px);
         }
 
-        .skill-icon-item i {
-            font-size: clamp(36px, 6vw, 48px);
+        .skill-badge img {
+            display: block;
+            height: auto;
+            max-height: 28px;
+            border-radius: 4px;
         }
 
-        .skill-icon-item span {
-            font-size: clamp(0.7rem, 1.2vw, 0.75rem);
-            color: var(--text-muted);
-            font-weight: 600;
-        }
-
-        .skill-card p {
+        .skill-description {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
             color: var(--text-secondary);
             font-size: clamp(0.875rem, 1.5vw, 0.95rem);
             line-height: 1.6;
-            margin: 0;
         }
 
         /* Education Cards */
@@ -516,7 +466,7 @@
 
         .education-card h3 {
             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin-bottom: var(--spacing-xs);
+            margin-bottom: 8px;
             color: var(--text-primary);
             line-height: 1.3;
             font-weight: 700;
@@ -525,7 +475,7 @@
         .education-meta {
             color: var(--text-muted);
             font-size: clamp(0.85rem, 1.5vw, 0.9rem);
-            margin-bottom: var(--spacing-sm);
+            margin-bottom: 16px;
             line-height: 1.5;
         }
 
@@ -569,11 +519,6 @@
         @media (max-width: 1024px) {
             .sidebar {
                 right: clamp(16px, 3vw, 24px);
-                gap: clamp(12px, 2vw, 16px);
-            }
-
-            .theme-toggle {
-                top: 80px;
             }
         }
 
@@ -582,9 +527,12 @@
                 display: block;
             }
 
-            .theme-toggle {
-                top: var(--spacing-md);
-                right: 80px;
+            .theme-button {
+                top: 80px;
+                right: 24px;
+                width: 46px;
+                height: 46px;
+                font-size: 1.3rem;
             }
 
             .sidebar {
@@ -599,7 +547,7 @@
                 flex-direction: column;
                 gap: 0;
                 background: var(--bg-secondary);
-                padding: var(--spacing-xxl) var(--spacing-md) var(--spacing-md);
+                padding: 64px 24px 24px;
                 border-left: 1px solid var(--border);
                 transition: transform 0.3s ease;
                 overflow-y: auto;
@@ -613,9 +561,9 @@
             .sidebar-btn {
                 width: 100%;
                 min-width: 100%;
-                margin-bottom: var(--spacing-sm);
+                margin-bottom: 16px;
                 text-align: center;
-                padding: clamp(12px, 3vw, 14px) var(--spacing-md);
+                padding: clamp(12px, 3vw, 14px) 24px;
             }
 
             .sidebar-btn:hover {
@@ -625,7 +573,7 @@
             .contact-links {
                 flex-direction: column;
                 align-items: center;
-                gap: var(--spacing-sm);
+                gap: 16px;
             }
 
             .contact-links a {
@@ -648,13 +596,14 @@
                 font-size: clamp(1.75rem, 10vw, 2.5rem);
             }
 
-            .skill-icons {
-                justify-content: center;
+            .theme-button {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
             }
 
-            .theme-toggle {
-                padding: 6px;
-                scale: 0.9;
+            .skill-badges {
+                justify-content: center;
             }
         }
 
@@ -687,7 +636,7 @@
         @media print {
             .sidebar,
             .mobile-menu-toggle,
-            .theme-toggle,
+            .theme-button,
             .scroll-indicator {
                 display: none !important;
             }
@@ -700,17 +649,12 @@
     </style>
 </head>
 <body>
-    <!-- Theme Toggle -->
-    <div class="theme-toggle">
-        <span class="theme-icon">☀️</span>
-        <label>
-            <input type="checkbox" id="themeToggle">
-            <span class="toggle-slider"></span>
-        </label>
-        <span class="theme-icon">🌙</span>
-    </div>
+    <!-- Theme Switch Button -->
+    <button id="theme-button" class="theme-button" aria-label="Switch to dark mode">
+        ☀️
+    </button>
 
-    <!-- Mobile Menu Toggle -->
+    <!-- Mobile Menu Toggle - Top Left -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">☰</button>
 
     <!-- Sidebar Navigation -->
@@ -729,10 +673,10 @@
                 <h1>DEVANSHU BHARTI</h1>
                 <p class="title">DATA SCIENTIST</p>
                 <div class="contact-links">
-                    <a href="tel:9811146645" aria-label="Call 9811146645">📞 9811146645</a>
+                    <a href="tel:+91 9811146645" aria-label="Call +91 9811146645">📞 +91 9811146645</a>
                     <a href="mailto:devansh.bharti46@gmail.com" aria-label="Email Devanshu">✉ Email</a>
                     <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">💼 LinkedIn</a>
-                    <a href="https://github.com/devan-b46" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
+                    <a href="https://github.com/devanshu-bharti" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
                 </div>
             </div>
             <div class="scroll-indicator" aria-hidden="true">↓ Scroll</div>
@@ -823,143 +767,156 @@
         </div>
     </section>
 
-    <!-- Skills with Icons -->
+    <!-- Skills with Official Logos -->
     <section id="skills">
         <div class="container">
             <div class="section-label reveal">EXPERTISE</div>
             <h2 class="section-title reveal">Skills</h2>
             
             <div class="skills-grid">
-                <div class="skill-card reveal">
-                    <div class="skill-card-header">
-                        <div class="skill-icon-wrapper">
-                            <i class="devicon-python-plain colored"></i>
+                <!-- Programming & Databases -->
+                <div class="skill-category reveal">
+                    <h3>Programming & Databases</h3>
+                    <div class="skill-badges">
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
                         </div>
-                        <h3>Programming & Databases</h3>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item">
-                            <i class="devicon-python-plain colored"></i>
-                            <span>Python</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-numpy-original colored"></i>
-                            <span>NumPy</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-pandas-original colored"></i>
-                            <span>Pandas</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=python&logoColor=white" alt="Matplotlib">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-matplotlib-plain colored"></i>
-                            <span>Matplotlib</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Seaborn">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-scikitlearn-plain colored"></i>
-                            <span>Scikit-learn</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-mysql-plain colored"></i>
-                            <span>MySQL</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-postgresql-plain colored"></i>
-                            <span>PostgreSQL</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-microsoftsqlserver-plain colored"></i>
-                            <span>MS SQL</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
                         </div>
                     </div>
                 </div>
 
-                <div class="skill-card reveal">
-                    <div class="skill-card-header">
-                        <div class="skill-icon-wrapper">
-                            <i class="devicon-tensorflow-original colored"></i>
+                <!-- Machine Learning & Deep Learning -->
+                <div class="skill-category reveal">
+                    <h3>Machine Learning & Deep Learning</h3>
+                    <div class="skill-badges">
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
                         </div>
-                        <h3>Machine Learning</h3>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item">
-                            <i class="devicon-tensorflow-original colored"></i>
-                            <span>TensorFlow</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-pytorch-original colored"></i>
-                            <span>PyTorch</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white" alt="Keras">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-keras-plain colored"></i>
-                            <span>Keras</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
                         </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-scikitlearn-plain colored"></i>
-                            <span>Scikit-learn</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/XGBoost-FF6600?style=for-the-badge&logo=xgboost&logoColor=white" alt="XGBoost">
                         </div>
-                    </div>
-                    <p style="margin-top: 12px;">Predictive Modelling, Clustering (KMeans, DBScan), NLP (spaCy, NLTK, VADER), XGBoost</p>
-                </div>
-
-                <div class="skill-card reveal">
-                    <div class="skill-card-header">
-                        <div class="skill-icon-wrapper">
-                            <span style="font-size: 28px;">📊</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white" alt="spaCy">
                         </div>
-                        <h3>BI & Visualization</h3>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item">
-                            <span style="font-size: 48px;">📊</span>
-                            <span>Power BI</span>
-                        </div>
-                        <div class="skill-icon-item">
-                            <span style="font-size: 48px;">📈</span>
-                            <span>Excel</span>
-                        </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-streamlit-plain colored"></i>
-                            <span>Streamlit</span>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/NLTK-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="NLTK">
                         </div>
                     </div>
-                    <p style="margin-top: 12px;">Power Query, DAX, Measures, DirectQuery, Advanced Functions, Pivot Tables</p>
-                </div>
-
-                <div class="skill-card reveal">
-                    <div class="skill-card-header">
-                        <div class="skill-icon-wrapper">
-                            <i class="devicon-git-plain colored"></i>
-                        </div>
-                        <h3>Version Control & Tools</h3>
-                    </div>
-                    <div class="skill-icons">
-                        <div class="skill-icon-item">
-                            <i class="devicon-git-plain colored"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-github-original"></i>
-                            <span>GitHub</span>
-                        </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-bash-plain colored"></i>
-                            <span>Bash</span>
-                        </div>
-                        <div class="skill-icon-item">
-                            <i class="devicon-vscode-plain colored"></i>
-                            <span>VS Code</span>
-                        </div>
+                    <div class="skill-description">
+                        Predictive Modeling • Classification & Regression • Clustering (KMeans, DBScan) • Natural Language Processing • Sentiment Analysis • Time Series Forecasting (LSTM)
                     </div>
                 </div>
 
-                <div class="skill-card reveal">
-                    <div class="skill-card-header">
-                        <div class="skill-icon-wrapper">
-                            <span style="font-size: 28px;">🎯</span>
+                <!-- BI & Visualization -->
+                <div class="skill-category reveal">
+                    <h3>Business Intelligence & Visualization</h3>
+                    <div class="skill-badges">
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/📊_Power_BI-F2C811?style=for-the-badge&logoColor=black" alt="Power BI">
                         </div>
-                        <h3>Soft Skills</h3>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Microsoft Excel">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white" alt="Tableau">
+                        </div>
                     </div>
-                    <p>Problem-Solving • Communication • Teamwork • Adaptability • Continuous Learning • Critical Thinking • Data Storytelling</p>
+                    <div class="skill-description">
+                        Power Query • DAX • Measures • DirectQuery • Advanced Functions • Pivot Tables • Interactive Dashboards • Data Storytelling
+                    </div>
+                </div>
+
+                <!-- Cloud & Data Engineering -->
+                <div class="skill-category reveal">
+                    <h3>Cloud & Data Engineering</h3>
+                    <div class="skill-badges">
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Amazon%20Redshift-8C4FFF?style=for-the-badge&logo=amazon-redshift&logoColor=white" alt="Amazon Redshift">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/ETL-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="ETL">
+                        </div>
+                    </div>
+                    <div class="skill-description">
+                        Data Pipelines • ETL Processes • Database Optimization • Data Governance
+                    </div>
+                </div>
+
+                <!-- Version Control & Tools -->
+                <div class="skill-category reveal">
+                    <h3>Version Control & Development Tools</h3>
+                    <div class="skill-badges">
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
+                        </div>
+                        <div class="skill-badge">
+                            <img src="https://img.shields.io/badge/DBeaver-382923?style=for-the-badge&logo=dbeaver&logoColor=white" alt="DBeaver">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-category reveal">
+                    <h3>Professional Skills</h3>
+                    <div class="skill-description">
+                        🎯 Problem-Solving • 💬 Communication • 🤝 Teamwork • 🔄 Adaptability • 📚 Continuous Learning • 🧠 Critical Thinking • 📊 Data Storytelling • 📈 Business Acumen
+                    </div>
                 </div>
             </div>
         </div>
@@ -993,26 +950,33 @@
     </footer>
 
     <script>
-        // Theme Toggle Functionality with localStorage
-        const themeToggle = document.getElementById('themeToggle');
+        // Theme Button Functionality
+        const themeButton = document.getElementById('theme-button');
         const html = document.documentElement;
         
         // Check for saved theme preference or default to 'light'
-        const currentTheme = localStorage.getItem('theme') || 'light';
+        let currentTheme = localStorage.getItem('theme') || 'light';
         html.setAttribute('data-theme', currentTheme);
         
-        if (currentTheme === 'dark') {
-            themeToggle.checked = true;
-        }
-
-        themeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                html.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
+        // Update button icon and label based on current theme
+        function updateThemeButton() {
+            if (currentTheme === 'dark') {
+                themeButton.textContent = '🌙';
+                themeButton.setAttribute('aria-label', 'Switch to light mode');
             } else {
-                html.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
+                themeButton.textContent = '☀️';
+                themeButton.setAttribute('aria-label', 'Switch to dark mode');
             }
+        }
+        
+        updateThemeButton();
+
+        // Toggle theme on button click
+        themeButton.addEventListener('click', function() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            updateThemeButton();
         });
 
         // Sidebar and Navigation
@@ -1116,7 +1080,7 @@
             if (e.key === 'Escape' && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
                 mobileMenuToggle.textContent = '☰';
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'false');
                 mobileMenuToggle.focus();
             }
         });
