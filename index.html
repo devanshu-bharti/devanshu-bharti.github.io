@@ -368,6 +368,41 @@
             font-weight: 700;
         }
 
+        /* Clickable Project Titles */
+        .timeline-item h3 a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item h3 a::after {
+            content: '🔗';
+            font-size: 0.8em;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item h3 a:hover {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .timeline-item h3 a:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item h3 a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
         .timeline-meta {
             color: var(--text-muted);
             font-size: clamp(0.85rem, 1.5vw, 0.9rem);
@@ -791,14 +826,23 @@
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects with Clickable Titles -->
     <section id="projects">
         <div class="container">
             <div class="section-label reveal">PORTFOLIO</div>
             <h2 class="section-title reveal">Projects</h2>
             
+            <!-- ⭐⭐⭐ PROJECT 1 - NLP for Customer Insights ⭐⭐⭐ -->
+            <!-- 🔗 Edit URL: https://github.com/devanshu-bharti/NLP_Women_ECommerce_Clothing_Review_Sentiment_Analysis -->
             <div class="timeline-item reveal">
-                <h3>NLP for Customer Insights</h3>
+                <h3>
+                    <a href="https://github.com/devanshu-bharti/NLP_Women_ECommerce_Clothing_Review_Sentiment_Analysis" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       aria-label="View NLP for Customer Insights project on GitHub">
+                        NLP for Customer Insights
+                    </a>
+                </h3>
                 <p class="timeline-meta"><span>NLP, spaCy, NLTK, VADER</span> • June 2025</p>
                 <ul>
                     <li>Comprehensive case study on Women's E-Commerce Clothing Reviews, focusing on Sentiment Analysis and Predictive Modeling using Natural Language Processing</li>
@@ -806,8 +850,17 @@
                 </ul>
             </div>
 
+            <!-- ⭐⭐⭐ PROJECT 2 - E-Commerce Sales & Promotion ⭐⭐⭐ -->
+            <!-- 🔗 Edit URL: https://github.com/devanshu-bharti/Power-BI-Projects/tree/main/E-Commerce%20Sales%20and%20Promotion%20Case%20Study -->
             <div class="timeline-item reveal">
-                <h3>E-Commerce Sales & Promotion</h3>
+                <h3>
+                    <a href="https://github.com/devanshu-bharti/Power-BI-Projects/tree/main/E-Commerce%20Sales%20and%20Promotion%20Case%20Study" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       aria-label="View E-Commerce Sales & Promotion project on GitHub">
+                        E-Commerce Sales & Promotion
+                    </a>
+                </h3>
                 <p class="timeline-meta"><span>PowerBI (DAX, Power Query, Measures)</span> • July 2024</p>
                 <ul>
                     <li>Developed an interactive analytical dashboard to deep-dive into customer behavior data from a leading e-commerce platform</li>
@@ -815,6 +868,7 @@
                 </ul>
             </div>
 
+            <!-- ⭐⭐⭐ PROJECT 3 - Credit Card Predictions (NO LINK) ⭐⭐⭐ -->
             <div class="timeline-item reveal">
                 <h3>Credit Card Predictions</h3>
                 <p class="timeline-meta"><span>Python, Machine Learning, Scikit-learn</span> • April 2024</p>
