@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devanshu Bharti - Data Scientist | Machine Learning & AI Specialist</title>
-    <meta name="description" content="Data Scientist with expertise in Machine Learning, Deep Learning, NLP, and Business Intelligence. Specialized in predictive modeling, data visualization, and end-to-end ML pipelines.">
+    <title>Devanshu Bharti - Data Scientist</title>
     
     <style>
         * {
@@ -89,6 +88,15 @@
             background: var(--accent-light);
         }
 
+        .theme-button:active {
+            transform: scale(0.95);
+        }
+
+        .theme-button:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             position: fixed;
@@ -112,6 +120,11 @@
             border-color: var(--accent);
             color: white;
             transform: scale(1.05);
+        }
+
+        .mobile-menu-toggle:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         /* Sidebar Navigation */
@@ -165,6 +178,11 @@
             box-shadow: 0 4px 8px var(--shadow-hover);
         }
 
+        .sidebar-btn:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
         .sidebar-btn.active {
             border-color: var(--accent);
             color: var(--accent);
@@ -178,6 +196,7 @@
         /* Header with Profile Picture */
         header {
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -231,20 +250,9 @@
             font-size: clamp(1rem, 2vw + 0.5rem, 1.8rem);
             color: var(--text-secondary);
             font-weight: 500;
-            margin-bottom: clamp(16px, 2vh, 20px);
+            margin-bottom: clamp(32px, 5vh, 48px);
             letter-spacing: clamp(2px, 0.3vw, 4px);
             text-transform: uppercase;
-        }
-
-        .header-content .subtitle {
-            font-size: clamp(0.95rem, 1.8vw + 0.3rem, 1.3rem);
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: clamp(32px, 5vh, 48px);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
         }
 
         .contact-links {
@@ -278,6 +286,11 @@
             transform: translateY(-4px);
             box-shadow: 0 6px 12px var(--shadow-hover);
             border-color: var(--accent);
+        }
+
+        .contact-links a:focus {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
         }
 
         .scroll-indicator {
@@ -323,43 +336,7 @@
             font-size: clamp(1rem, 2vw, 1.15rem);
             line-height: 1.8;
             color: var(--text-secondary);
-            max-width: 900px;
-            margin-bottom: 32px;
-        }
-
-        .specializations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .spec-card {
-            background: var(--bg-card);
-            padding: 28px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px var(--shadow);
-        }
-
-        .spec-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px var(--shadow-hover);
-        }
-
-        .spec-card h4 {
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .spec-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            max-width: 800px;
         }
 
         /* Timeline Items */
@@ -391,6 +368,7 @@
             font-weight: 700;
         }
 
+        /* Clickable Project Titles */
         .timeline-item h3 a {
             color: var(--text-primary);
             text-decoration: none;
@@ -417,6 +395,12 @@
         .timeline-item h3 a:hover::after {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        .timeline-item h3 a:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+            border-radius: 4px;
         }
 
         .timeline-meta {
@@ -453,24 +437,7 @@
             font-weight: bold;
         }
 
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
-        }
-
-        .tech-badge {
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid var(--accent);
-        }
-
-        /* Skills Section */
+        /* Skills Section with Clickable Links */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
@@ -619,6 +586,12 @@
         }
 
         /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .sidebar {
+                right: clamp(16px, 3vw, 24px);
+            }
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
@@ -627,6 +600,15 @@
             .theme-button {
                 top: 80px;
                 right: 24px;
+                width: 46px;
+                height: 46px;
+                font-size: 1.3rem;
+            }
+
+            .profile-picture {
+                width: clamp(100px, 25vw, 140px);
+                height: clamp(100px, 25vw, 140px);
+                border-width: 4px;
             }
 
             .sidebar {
@@ -636,6 +618,7 @@
                 bottom: 0;
                 width: min(300px, 80vw);
                 height: 100vh;
+                height: 100dvh;
                 transform: translateX(100%);
                 flex-direction: column;
                 gap: 0;
@@ -656,23 +639,103 @@
                 min-width: 100%;
                 margin-bottom: 16px;
                 text-align: center;
+                padding: clamp(12px, 3vw, 14px) 24px;
+            }
+
+            .sidebar-btn:hover {
+                transform: translateX(0) scale(1.02);
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .contact-links a {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            section {
+                padding: clamp(48px, 8vh, 80px) 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
 
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: clamp(1.75rem, 10vw, 2.5rem);
+            }
+
+            .theme-button {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+
+            .profile-picture {
+                width: 100px;
+                height: 100px;
+                border-width: 3px;
+            }
+
+            .skill-badges {
+                justify-content: center;
+            }
+        }
+
+        /* Landscape orientation */
+        @media (max-height: 600px) and (orientation: landscape) {
+            header {
+                min-height: auto;
+                padding: clamp(40px, 10vh, 60px) 0;
+            }
+
+            .profile-picture {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 16px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
+
+            .scroll-indicator {
+                animation: none;
+            }
+
+            .profile-picture {
+                animation: none;
+            }
         }
 
+        /* Print styles */
         @media print {
             .sidebar,
             .mobile-menu-toggle,
             .theme-button,
             .scroll-indicator {
                 display: none !important;
+            }
+
+            body {
+                background: white;
+                color: black;
             }
         }
     </style>
@@ -702,16 +765,15 @@
                 <img src="files/pic.png" alt="Devanshu Bharti Profile Picture" class="profile-picture">
                 
                 <h1>DEVANSHU BHARTI</h1>
-                <p class="title">DATA SCIENTIST & ML ENGINEER</p>
-                <p class="subtitle">Transforming complex data into actionable insights through advanced machine learning, predictive analytics, and intelligent automation. Specialized in building end-to-end ML pipelines and scalable data solutions.</p>
+                <p class="title">DATA SCIENTIST</p>
                 <div class="contact-links">
-                    <a href="tel:9811146645" aria-label="Call 9811146645">📞 +91 9811146645</a>
-                    <a href="mailto:devansh.bharti46@gmail.com" aria-label="Email Devanshu">✉ Email Me</a>
+                    <a href="tel:9811146645" aria-label="Call 9811146645">📞 9811146645</a>
+                    <a href="mailto:devansh.bharti46@gmail.com" aria-label="Email Devanshu">✉ Email</a>
                     <a href="https://linkedin.com/in/devanshu-bharti/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">💼 LinkedIn</a>
                     <a href="https://github.com/devan-b46" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">⚡ GitHub</a>
                 </div>
             </div>
-            <div class="scroll-indicator" aria-hidden="true">↓ Scroll to explore</div>
+            <div class="scroll-indicator" aria-hidden="true">↓ Scroll</div>
         </div>
     </header>
 
@@ -719,265 +781,192 @@
     <section id="about">
         <div class="container">
             <div class="section-label reveal">ABOUT ME</div>
-            <h2 class="section-title reveal">Profile & Expertise</h2>
+            <h2 class="section-title reveal">Profile</h2>
             <p class="about-text reveal">
-                Results-driven Data Scientist with 2+ years of professional experience in analytics and data engineering, now specializing in end-to-end machine learning solutions. Armed with an <strong>IIT Guwahati-certified PG Diploma in Data Science</strong> and hands-on expertise across the complete data science lifecycle—from exploratory data analysis and feature engineering to model deployment and MLOps automation.
+                Analytical professional with 2 years of experience, now specializing in Data Science. Armed with an IIT Guwahati-certified PG Diploma and hands-on expertise in Python, Machine Learning, SQL, and Power BI. Eager to apply predictive modeling and data visualization skills to solve complex business problems and drive data-informed strategies in a challenging Data Scientist role.
             </p>
-            <p class="about-text reveal">
-                I excel at translating complex business problems into data-driven solutions using <strong>Python, SQL, TensorFlow, and cloud-based data platforms</strong>. My experience spans building real-time production dashboards, developing predictive models for demand forecasting, implementing NLP-based sentiment analysis systems, and optimizing ETL pipelines for large-scale data processing. Currently contributing to agricultural technology at Star Agribazaar, where I maintain LSTM-based yield prediction models and manage data infrastructure connecting Amazon Redshift, SQLite, and Python-based ML workflows.
-            </p>
-            <p class="about-text reveal">
-                Passionate about leveraging cutting-edge technologies—including <strong>Deep Learning, Natural Language Processing, Time Series Forecasting, and Business Intelligence</strong>—to solve real-world challenges. I thrive in collaborative environments where data storytelling meets technical excellence, and I'm committed to continuous learning in the rapidly evolving AI landscape.
-            </p>
-
-            <div class="specializations">
-                <div class="spec-card reveal">
-                    <h4>🤖 Machine Learning & AI</h4>
-                    <p>Supervised & Unsupervised Learning, Classification, Regression, Clustering (KMeans, DBSCAN), Ensemble Methods (XGBoost, Random Forest), Model Optimization & Hyperparameter Tuning</p>
-                </div>
-                <div class="spec-card reveal">
-                    <h4>🧠 Deep Learning & NLP</h4>
-                    <p>Neural Networks (TensorFlow, PyTorch, Keras), LSTM for Time Series, Sentiment Analysis (VADER, spaCy), Text Classification, Word Embeddings, Transformer Models</p>
-                </div>
-                <div class="spec-card reveal">
-                    <h4>📊 Data Engineering & Analytics</h4>
-                    <p>ETL Pipeline Development, Data Warehousing (Amazon Redshift), Database Management (MySQL, PostgreSQL, SQLite), Power BI Dashboards, DAX, Power Query, Real-time Analytics</p>
-                </div>
-                <div class="spec-card reveal">
-                    <h4>☁️ Cloud & MLOps</h4>
-                    <p>AWS Services, Model Deployment, Automated Retraining Pipelines, Data Governance, Version Control (Git/GitHub), CI/CD for ML, Workflow Automation</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Experience -->
     <section id="experience">
         <div class="container">
-            <div class="section-label reveal">CAREER JOURNEY</div>
-            <h2 class="section-title reveal">Professional Experience</h2>
+            <div class="section-label reveal">CAREER</div>
+            <h2 class="section-title reveal">Experience</h2>
             
             <div class="timeline-item reveal">
                 <h3>Data Engineer Intern</h3>
-                <p class="timeline-meta"><span>Star Agribazaar Technology Pvt. Ltd.</span> • Noida, Uttar Pradesh • August 2024 - Present</p>
+                <p class="timeline-meta"><span>Star Agribazaar Technology Pvt. Ltd.</span> • Noida, UP • August 2025 - Present</p>
                 <ul>
-                    <li><strong>Production Dashboard Development:</strong> Architected and deployed real-time operational dashboards in Power BI utilizing advanced DAX functions, DirectQuery connections, and Power Query M transformations, resulting in a 25% improvement in operational visibility and decision-making efficiency across agricultural supply chain operations</li>
-                    <li><strong>Data Pipeline Architecture:</strong> Designed and maintained robust ETL data pipelines connecting Amazon Redshift data warehouse with SQLite databases and Python-based machine learning scripts, ensuring continuous data flow with 99.5% uptime and enabling seamless model updates for production forecasting systems</li>
-                    <li><strong>Machine Learning Model Support:</strong> Collaborated with data science team to support LSTM-based agricultural yield prediction models, implementing automated model retraining pipelines that improved forecast accuracy by 12% through systematic feature engineering and hyperparameter optimization techniques</li>
-                    <li><strong>Cross-Functional Collaboration:</strong> Partnered with business stakeholders and engineering teams to establish data governance protocols, optimize database query performance (reducing average query time by 35%), and implement data transformation logic that enhanced data quality scores from 78% to 94%</li>
-                    <li><strong>Documentation & Best Practices:</strong> Created comprehensive technical documentation for data workflows, established coding standards for Python ETL scripts, and conducted knowledge transfer sessions to ensure maintainability and scalability of data infrastructure</li>
+                    <li>Developed and maintained real-time production dashboards in Power BI with DAX, DirectQuery, and Power Query, improving operational visibility by 25%</li>
+                    <li>Managed data pipelines connecting Amazon Redshift, SQLite, and Python scripts for continuous ETL data flow and model updates</li>
+                    <li>Supported LSTM-based yield prediction models and automated model retraining pipelines, optimizing forecast accuracy by 12%</li>
+                    <li>Collaborated with business and engineering teams to ensure data governance, transformation logic, and database optimization</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Power BI</span>
-                    <span class="tech-badge">Amazon Redshift</span>
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">SQLite</span>
-                    <span class="tech-badge">LSTM</span>
-                    <span class="tech-badge">ETL</span>
-                    <span class="tech-badge">DAX</span>
-                </div>
             </div>
 
             <div class="timeline-item reveal">
                 <h3>Research Analyst (Process Associate)</h3>
                 <p class="timeline-meta"><span>Suntec Web Services Pvt. Ltd.</span> • New Delhi • 2024 - 2025</p>
                 <ul>
-                    <li><strong>Market Intelligence & Research:</strong> Conducted comprehensive market research analyzing industry trends, competitive landscapes, and consumer behavior patterns using data-driven methodologies, providing strategic insights that informed C-suite decision-making and product development roadmaps</li>
-                    <li><strong>Data Analysis & Visualization:</strong> Leveraged advanced Excel functions (VLOOKUP, INDEX-MATCH, Pivot Tables) and statistical analysis techniques to process large datasets (500K+ records), identifying key performance indicators and market opportunities that contributed to a 15% increase in client engagement metrics</li>
-                    <li><strong>Strategic Reporting:</strong> Designed and delivered executive-level presentations and comprehensive analytical reports through the company's Igloo collaboration platform, translating complex data findings into actionable business recommendations that drove strategic initiatives across multiple client portfolios</li>
-                    <li><strong>Competitive Analysis:</strong> Performed systematic competitor benchmarking studies across diverse industries, utilizing web scraping techniques and API integrations to gather real-time market data, enabling clients to identify untapped market segments and optimize pricing strategies</li>
-                    <li><strong>Client Relationship Management:</strong> Collaborated directly with client stakeholders to understand business requirements, define research objectives, and deliver customized analytical solutions that aligned with specific organizational goals and KPIs</li>
+                    <li>Conducted in-depth market research to assess industry trends, competitive landscapes, and customer behaviors</li>
+                    <li>Provided strategic recommendations to inform business decisions and drive growth</li>
+                    <li>Prepared comprehensive reports and presentations to communicate findings to company tool (Igloo)</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Microsoft Excel</span>
-                    <span class="tech-badge">Data Visualization</span>
-                    <span class="tech-badge">Statistical Analysis</span>
-                    <span class="tech-badge">Market Research</span>
-                    <span class="tech-badge">Business Intelligence</span>
-                </div>
             </div>
 
             <div class="timeline-item reveal">
                 <h3>Assistant Manager</h3>
-                <p class="timeline-meta"><span>Reliance Jio Infocomm Ltd.</span> • New Delhi • 2018 - 2019</p>
+                <p class="timeline-meta"><span>Reliance Jio Incomm. Ltd.</span> • New Delhi • 2018 - 2019</p>
                 <ul>
-                    <li><strong>Sales Analytics & Performance Tracking:</strong> Spearheaded the implementation of data-driven sales tracking systems using Microsoft Excel and Power BI, consolidating multi-source operational data to create unified dashboards that improved data accuracy by 15% and enabled real-time performance monitoring across 20+ retail touchpoints</li>
-                    <li><strong>Dashboard Development:</strong> Designed and maintained interactive business intelligence dashboards featuring dynamic KPI visualization, trend analysis, and predictive forecasting capabilities, reducing management report generation time by 30% and enabling faster strategic decision-making in high-velocity retail environment</li>
-                    <li><strong>Team Leadership & Training:</strong> Led a team of 8 sales associates, implementing data-informed coaching strategies based on individual performance metrics, resulting in 22% improvement in team sales conversion rates and 18% increase in customer satisfaction scores</li>
-                    <li><strong>Process Optimization:</strong> Identified and resolved operational bottlenecks through systematic data analysis, streamlining inventory management and customer onboarding processes, which contributed to a 20% reduction in customer wait times and enhanced overall service delivery</li>
-                    <li><strong>Stakeholder Communication:</strong> Presented weekly analytical insights and performance reports to regional management, effectively communicating complex data patterns through visual storytelling techniques that informed territory-wide strategic planning and resource allocation</li>
+                    <li>Leveraged MS Excel to collect, organize, and manage sales and operational data, improving data accuracy for analysis by 15%</li>
+                    <li>Developed and maintained interactive dashboards in Power BI and Excel to visualize key performance indicators, reducing report generation time by 30%</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Microsoft Excel</span>
-                    <span class="tech-badge">Power BI</span>
-                    <span class="tech-badge">Data Analysis</span>
-                    <span class="tech-badge">KPI Tracking</span>
-                    <span class="tech-badge">Team Management</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects with Clickable Titles -->
     <section id="projects">
         <div class="container">
-            <div class="section-label reveal">PORTFOLIO SHOWCASE</div>
-            <h2 class="section-title reveal">Featured Data Science Projects</h2>
+            <div class="section-label reveal">PORTFOLIO</div>
+            <h2 class="section-title reveal">Projects</h2>
             
-            <!-- PROJECT 1 -->
+            <!-- ⭐⭐⭐ PROJECT 1 - NLP for Customer Insights ⭐⭐⭐ -->
+            <!-- 🔗 Edit URL: https://github.com/devanshu-bharti/NLP_Women_ECommerce_Clothing_Review_Sentiment_Analysis -->
             <div class="timeline-item reveal">
                 <h3>
                     <a href="https://github.com/devanshu-bharti/NLP_Women_ECommerce_Clothing_Review_Sentiment_Analysis" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        aria-label="View NLP for Customer Insights project on GitHub">
-                        NLP-Powered Customer Sentiment Analysis for E-Commerce
+                        NLP for Customer Insights
                     </a>
                 </h3>
-                <p class="timeline-meta"><span>Natural Language Processing • Machine Learning</span> • June 2025</p>
+                <p class="timeline-meta"><span>NLP, spaCy, NLTK, VADER</span> • June 2025</p>
                 <ul>
-                    <li><strong>Business Context:</strong> Developed an end-to-end NLP pipeline to analyze 23,000+ customer reviews from a women's e-commerce clothing platform, aiming to extract actionable insights about product satisfaction, identify pain points, and predict customer recommendations to inform product development and marketing strategies</li>
-                    <li><strong>Technical Implementation:</strong> Implemented comprehensive text preprocessing workflow including tokenization, lemmatization, stopword removal, and n-gram analysis. Applied TF-IDF vectorization for feature extraction and trained multiple classification models (Logistic Regression, Naive Bayes, Random Forest) to predict review sentiment with 89% accuracy</li>
-                    <li><strong>Comparative Analysis:</strong> Conducted systematic comparison of sentiment analysis approaches including VADER (Valence Aware Dictionary), NLTK's SentimentIntensityAnalyzer, and spaCy's NLP pipeline, evaluating performance metrics across precision, recall, and F1-score to determine optimal methodology for business deployment</li>
-                    <li><strong>Insight Generation:</strong> Created interactive WordCloud visualizations and topic modeling outputs that revealed key themes in customer feedback, including sizing concerns (mentioned in 34% of negative reviews), fabric quality (42% positive correlation with high ratings), and delivery experience patterns</li>
-                    <li><strong>Business Impact:</strong> Delivered actionable recommendations based on sentiment patterns, potentially enabling 15-20% reduction in product returns through targeted improvements and enhanced customer satisfaction through data-driven product optimization</li>
+                    <li>Comprehensive case study on Women's E-Commerce Clothing Reviews, focusing on Sentiment Analysis and Predictive Modeling using Natural Language Processing</li>
+                    <li>Conducted comparative sentiment analysis using TFIDFVectorizer, Logistic Regression, WordCloud, and NLTK's VADER</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">NLTK</span>
-                    <span class="tech-badge">spaCy</span>
-                    <span class="tech-badge">TF-IDF</span>
-                    <span class="tech-badge">VADER</span>
-                    <span class="tech-badge">Scikit-learn</span>
-                    <span class="tech-badge">Pandas</span>
-                    <span class="tech-badge">Matplotlib</span>
-                </div>
             </div>
 
-            <!-- PROJECT 2 -->
+            <!-- ⭐⭐⭐ PROJECT 2 - E-Commerce Sales & Promotion ⭐⭐⭐ -->
+            <!-- 🔗 Edit URL: https://github.com/devanshu-bharti/Power-BI-Projects/tree/main/E-Commerce%20Sales%20and%20Promotion%20Case%20Study -->
             <div class="timeline-item reveal">
                 <h3>
                     <a href="https://github.com/devanshu-bharti/Power-BI-Projects/tree/main/E-Commerce%20Sales%20and%20Promotion%20Case%20Study" 
                        target="_blank" 
                        rel="noopener noreferrer" 
-                       aria-label="View E-Commerce Analytics Dashboard project on GitHub">
-                        E-Commerce Sales Analytics & Promotion Optimization Dashboard
+                       aria-label="View E-Commerce Sales & Promotion project on GitHub">
+                        E-Commerce Sales & Promotion
                     </a>
                 </h3>
-                <p class="timeline-meta"><span>Business Intelligence • Data Visualization</span> • July 2024</p>
+                <p class="timeline-meta"><span>PowerBI (DAX, Power Query, Measures)</span> • July 2024</p>
                 <ul>
-                    <li><strong>Project Overview:</strong> Architected a comprehensive Power BI analytical dashboard analyzing customer purchase behavior across a leading e-commerce platform, processing 500K+ transaction records to uncover pricing strategies, promotional effectiveness, and product recommendation patterns that drive revenue growth</li>
-                    <li><strong>Advanced DAX Implementation:</strong> Developed complex DAX measures and calculated columns for time intelligence calculations (YoY growth, MoM trends), customer lifetime value (CLV) computation, basket analysis metrics, and promotional ROI calculations. Implemented row-level security for role-based data access across departments</li>
-                    <li><strong>Data Transformation:</strong> Utilized Power Query M language for advanced ETL operations including data cleansing (handling 15K+ null values), date table creation, many-to-many relationship resolution, and performance optimization through query folding techniques that reduced refresh time by 60%</li>
-                    <li><strong>Interactive Visualizations:</strong> Created drill-through pages, dynamic filtering with slicers, conditional formatting, and custom tooltips that enable stakeholders to explore data across multiple dimensions—product categories, time periods, customer segments, and geographic regions</li>
-                    <li><strong>Key Business Insights:</strong> Uncovered that promotional campaigns during specific time windows (6-9 PM) generated 32% higher conversion rates; identified that bundle recommendations increased average order value by 28%; and discovered that personalized product suggestions improved customer retention by 19%</li>
-                    <li><strong>Deployment & Impact:</strong> Deployed dashboard to Power BI Service with scheduled refresh automation, enabling real-time decision-making for marketing and sales teams, potentially increasing quarterly revenue by 12-15% through data-driven campaign optimization</li>
+                    <li>Developed an interactive analytical dashboard to deep-dive into customer behavior data from a leading e-commerce platform</li>
+                    <li>Unearthed key insights on pricing, promotions, and recommendations, boosting data usability and driving potential revenue growth</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Power BI</span>
-                    <span class="tech-badge">DAX</span>
-                    <span class="tech-badge">Power Query</span>
-                    <span class="tech-badge">Data Modeling</span>
-                    <span class="tech-badge">ETL</span>
-                    <span class="tech-badge">Business Analytics</span>
-                </div>
             </div>
 
-            <!-- PROJECT 3 -->
+            <!-- ⭐⭐⭐ PROJECT 3 - Credit Card Predictions (NO LINK) ⭐⭐⭐ -->
             <div class="timeline-item reveal">
-                <h3>Predictive Credit Card Spending Pattern Analysis</h3>
-                <p class="timeline-meta"><span>Machine Learning • Predictive Analytics</span> • April 2024</p>
+                <h3>Credit Card Predictions</h3>
+                <p class="timeline-meta"><span>Python, Machine Learning, Scikit-learn</span> • April 2024</p>
                 <ul>
-                    <li><strong>Problem Statement:</strong> Developed machine learning models to predict future credit card spending patterns and customer segmentation for targeted marketing campaigns, analyzing transaction history, demographic data, and behavioral indicators across 50K+ credit card holders</li>
-                    <li><strong>Data Engineering:</strong> Performed extensive feature engineering including creation of behavioral features (transaction frequency, average spend per category, monthly spending volatility), demographic encoding, time-based features (seasonality, day-of-week patterns), and aggregated metrics for robust model input</li>
-                    <li><strong>Model Development:</strong> Built and evaluated multiple regression models (Linear Regression, Ridge, Lasso, Random Forest Regressor, XGBoost) to predict monthly spending amounts, achieving R² score of 0.84. Implemented ensemble methods for improved prediction accuracy and robustness</li>
-                    <li><strong>Customer Segmentation:</strong> Applied unsupervised learning techniques (K-Means clustering with Elbow Method, DBSCAN for outlier detection) to segment customers into 5 distinct groups based on spending behavior: High-Value Regular Spenders, Occasional Big Spenders, Budget-Conscious, Seasonal Shoppers, and At-Risk customers</li>
-                    <li><strong>Business Applications:</strong> Delivered actionable recommendations for personalized marketing campaigns, credit limit adjustments, and fraud detection thresholds for each customer segment, potentially increasing campaign ROI by 35% and reducing default risk by identifying high-risk spending patterns</li>
-                    <li><strong>Model Evaluation & Validation:</strong> Conducted comprehensive model validation using cross-validation techniques, performed residual analysis, and created SHAP (SHapley Additive exPlanations) visualizations to interpret feature importance and model decisions for business stakeholders</li>
+                    <li>Analyzed credit card transaction data and customer demographics to predict future spending patterns</li>
+                    <li>Built a model to segment customers based on spending behavior for targeted marketing campaigns</li>
                 </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">Python</span>
-                    <span class="tech-badge">Scikit-learn</span>
-                    <span class="tech-badge">XGBoost</span>
-                    <span class="tech-badge">Pandas</span>
-                    <span class="tech-badge">NumPy</span>
-                    <span class="tech-badge">K-Means</span>
-                    <span class="tech-badge">Feature Engineering</span>
-                    <span class="tech-badge">Seaborn</span>
-                </div>
-            </div>
-
-            <!-- Additional Project Ideas (Optional - you can add more) -->
-            <div class="timeline-item reveal">
-                <h3>Time Series Forecasting for Inventory Management</h3>
-                <p class="timeline-meta"><span>Deep Learning • Time Series Analysis</span> • March 2024</p>
-                <ul>
-                    <li><strong>Objective:</strong> Built LSTM-based deep learning models to forecast product demand for retail inventory optimization, reducing stockouts by 28% and overstock situations by 22% through accurate 30-day demand predictions</li>
-                    <li><strong>Technical Approach:</strong> Implemented bidirectional LSTM networks with attention mechanisms using TensorFlow/Keras, incorporating external features like seasonality, promotions, holidays, and weather data for improved forecast accuracy (MAPE: 8.4%)</li>
-                    <li><strong>Data Pipeline:</strong> Created automated data ingestion pipeline from SQL databases, performed time series decomposition (trend, seasonality, residuals), handled missing values through forward-fill and interpolation techniques, and implemented sliding window approach for sequence generation</li>
-                    <li><strong>Model Deployment:</strong> Deployed model as REST API using Flask, integrated with inventory management system for automated reorder point calculations, and established monitoring dashboard for prediction drift detection and model retraining triggers</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tech-badge">TensorFlow</span>
-                    <span class="tech-badge">LSTM</span>
-                    <span class="tech-badge">Time Series</span>
-                    <span class="tech-badge">Keras</span>
-                    <span class="tech-badge">Flask API</span>
-                    <span class="tech-badge">SQL</span>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section (keeping your existing comprehensive skills with all badges) -->
+    <!-- Skills with Clickable Links -->
     <section id="skills">
         <div class="container">
-            <div class="section-label reveal">TECHNICAL PROFICIENCY</div>
-            <h2 class="section-title reveal">Skills & Technologies</h2>
+            <div class="section-label reveal">EXPERTISE</div>
+            <h2 class="section-title reveal">Skills</h2>
             
             <div class="skills-grid">
-                <!-- Programming & Data Analysis -->
+                <!-- Programming & Databases -->
                 <div class="skill-category reveal">
-                    <h3>Programming & Data Analysis</h3>
+                    <h3>Programming & Databases</h3>
                     <div class="skill-badges">
+                        <!-- ⭐ PYTHON - Edit URL: https://www.python.org/ -->
                         <div class="skill-badge">
-                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Python official website">
                                 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ NUMPY - Edit URL: https://numpy.org/ -->
                         <div class="skill-badge">
-                            <a href="https://numpy.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://numpy.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit NumPy official website">
                                 <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ PANDAS - Edit URL: https://pandas.pydata.org/ -->
                         <div class="skill-badge">
-                            <a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Pandas official website">
                                 <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" alt="Pandas">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ MATPLOTLIB - Edit URL: https://matplotlib.org/ -->
                         <div class="skill-badge">
-                            <a href="https://matplotlib.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://matplotlib.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Matplotlib official website">
                                 <img src="https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=python&logoColor=white" alt="Matplotlib">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ SEABORN - Edit URL: https://seaborn.pydata.org/ -->
                         <div class="skill-badge">
-                            <a href="https://seaborn.pydata.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://seaborn.pydata.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Seaborn official website">
                                 <img src="https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Seaborn">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ PLOTLY - Edit URL: https://plotly.com/ -->
                         <div class="skill-badge">
-                            <a href="https://plotly.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://plotly.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Plotly official website">
                                 <img src="https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white" alt="Plotly">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ SCIKIT-LEARN - Edit URL: https://scikit-learn.org/ -->
                         <div class="skill-badge">
-                            <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Scikit-learn official website">
                                 <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
                             </a>
                         </div>
-                    </div>
-                    <div class="skill-description">
-                        Expert in Python for data manipulation, statistical analysis, and scientific computing. Proficient in NumPy for numerical operations, Pandas for data wrangling, and visualization libraries for creating insightful, publication-ready charts and interactive dashboards.
+                        
+                        <!-- ⭐ MYSQL - Edit URL: https://www.mysql.com/ -->
+                        <div class="skill-badge">
+                            <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit MySQL official website">
+                                <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+                            </a>
+                        </div>
+                        
+                        <!-- ⭐ POSTGRESQL - Edit URL: https://www.postgresql.org/ -->
+                        <div class="skill-badge">
+                            <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit PostgreSQL official website">
+                                <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+                            </a>
+                        </div>
+                        
+                        <!-- ⭐ MS SQL SERVER - Edit URL: https://www.microsoft.com/en-us/sql-server -->
+                        <div class="skill-badge">
+                            <a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noopener noreferrer" aria-label="Visit Microsoft SQL Server official website">
+                                <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
+                            </a>
+                        </div>
+                        
+                        <!-- ⭐ SQLITE - Edit URL: https://www.sqlite.org/ -->
+                        <div class="skill-badge">
+                            <a href="https://www.sqlite.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit SQLite official website">
+                                <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -985,99 +974,94 @@
                 <div class="skill-category reveal">
                     <h3>Machine Learning & Deep Learning</h3>
                     <div class="skill-badges">
+                        <!-- ⭐ TENSORFLOW - Edit URL: https://www.tensorflow.org/ -->
                         <div class="skill-badge">
-                            <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit TensorFlow official website">
                                 <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="TensorFlow">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ PYTORCH - Edit URL: https://pytorch.org/ -->
                         <div class="skill-badge">
-                            <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://pytorch.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit PyTorch official website">
                                 <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ KERAS - Edit URL: https://keras.io/ -->
                         <div class="skill-badge">
-                            <a href="https://keras.io/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://keras.io/" target="_blank" rel="noopener noreferrer" aria-label="Visit Keras official website">
                                 <img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white" alt="Keras">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ SCIKIT-LEARN - Edit URL: https://scikit-learn.org/ -->
                         <div class="skill-badge">
-                            <a href="https://xgboost.ai/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://scikit-learn.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Scikit-learn official website">
+                                <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="Scikit-learn">
+                            </a>
+                        </div>
+                        
+                        <!-- ⭐ XGBOOST - Edit URL: https://xgboost.ai/ -->
+                        <div class="skill-badge">
+                            <a href="https://xgboost.ai/" target="_blank" rel="noopener noreferrer" aria-label="Visit XGBoost official website">
                                 <img src="https://img.shields.io/badge/XGBoost-FF6600?style=for-the-badge&logo=xgboost&logoColor=white" alt="XGBoost">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ SPACY - Edit URL: https://spacy.io/ -->
                         <div class="skill-badge">
-                            <a href="https://spacy.io/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://spacy.io/" target="_blank" rel="noopener noreferrer" aria-label="Visit spaCy official website">
                                 <img src="https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white" alt="spaCy">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ NLTK - Edit URL: https://www.nltk.org/ -->
                         <div class="skill-badge">
-                            <a href="https://www.nltk.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.nltk.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit NLTK official website">
                                 <img src="https://img.shields.io/badge/NLTK-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="NLTK">
                             </a>
                         </div>
                     </div>
                     <div class="skill-description">
-                        Advanced expertise in supervised learning (Classification, Regression), unsupervised learning (Clustering with KMeans, DBSCAN), ensemble methods (Random Forest, XGBoost), deep neural networks (CNN, RNN, LSTM), Natural Language Processing (sentiment analysis, text classification, named entity recognition), and Time Series Forecasting. Experienced in model selection, hyperparameter tuning, cross-validation, and performance optimization.
+                        Predictive Modeling • Classification & Regression • Clustering (KMeans, DBScan) • Natural Language Processing • Sentiment Analysis • Time Series Forecasting (LSTM)
                     </div>
                 </div>
 
-                <!-- Databases & SQL -->
-                <div class="skill-category reveal">
-                    <h3>Database Management & SQL</h3>
-                    <div class="skill-badges">
-                        <div class="skill-badge">
-                            <a href="https://www.mysql.com/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
-                            </a>
-                        </div>
-                        <div class="skill-badge">
-                            <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
-                            </a>
-                        </div>
-                        <div class="skill-badge">
-                            <a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noopener noreferrer">
-                                <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white" alt="MS SQL Server">
-                            </a>
-                        </div>
-                        <div class="skill-badge">
-                            <a href="https://www.sqlite.org/" target="_blank" rel="noopener noreferrer">
-                                <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="skill-description">
-                        Proficient in complex SQL queries, joins, subqueries, window functions, stored procedures, and query optimization. Experienced with relational database design, indexing strategies, transaction management, and data warehousing concepts for efficient data retrieval and manipulation.
-                    </div>
-                </div>
-
-                <!-- Business Intelligence & Visualization -->
+                <!-- BI & Visualization -->
                 <div class="skill-category reveal">
                     <h3>Business Intelligence & Visualization</h3>
                     <div class="skill-badges">
+                        <!-- ⭐ POWER BI - Edit URL: https://powerbi.microsoft.com/ -->
                         <div class="skill-badge">
-                            <a href="https://powerbi.microsoft.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://powerbi.microsoft.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Power BI official website">
                                 <img src="https://img.shields.io/badge/📊_Power_BI-F2C811?style=for-the-badge&logoColor=black" alt="Power BI">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ MICROSOFT EXCEL - Edit URL: https://www.microsoft.com/en-us/microsoft-365/excel -->
                         <div class="skill-badge">
-                            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener noreferrer" aria-label="Visit Microsoft Excel official website">
                                 <img src="https://img.shields.io/badge/Microsoft%20Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Microsoft Excel">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ STREAMLIT - Edit URL: https://streamlit.io/ -->
                         <div class="skill-badge">
-                            <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://streamlit.io/" target="_blank" rel="noopener noreferrer" aria-label="Visit Streamlit official website">
                                 <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ TABLEAU - Edit URL: https://www.tableau.com/ -->
                         <div class="skill-badge">
-                            <a href="https://www.tableau.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.tableau.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Tableau official website">
                                 <img src="https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white" alt="Tableau">
                             </a>
                         </div>
                     </div>
                     <div class="skill-description">
-                        Expert in creating interactive dashboards and data visualizations using Power BI (DAX, Power Query, Measures, DirectQuery, Row-Level Security), Microsoft Excel (Pivot Tables, Advanced Functions, Macros), Streamlit for rapid prototyping, and Tableau for executive reporting. Skilled in data storytelling and translating complex insights into actionable business intelligence.
+                        Power Query • DAX • Measures • DirectQuery • Advanced Functions • Pivot Tables • Interactive Dashboards • Data Storytelling
                     </div>
                 </div>
 
@@ -1085,74 +1069,85 @@
                 <div class="skill-category reveal">
                     <h3>Cloud & Data Engineering</h3>
                     <div class="skill-badges">
+                        <!-- ⭐ AMAZON REDSHIFT - Edit URL: https://aws.amazon.com/redshift/ -->
                         <div class="skill-badge">
-                            <a href="https://aws.amazon.com/redshift/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://aws.amazon.com/redshift/" target="_blank" rel="noopener noreferrer" aria-label="Visit Amazon Redshift official website">
                                 <img src="https://img.shields.io/badge/Amazon%20Redshift-8C4FFF?style=for-the-badge&logo=amazon-redshift&logoColor=white" alt="Amazon Redshift">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ AWS - Edit URL: https://aws.amazon.com/ -->
                         <div class="skill-badge">
-                            <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit AWS official website">
                                 <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ ETL (Google Cloud) - Edit URL: https://cloud.google.com/ -->
                         <div class="skill-badge">
-                            <a href="https://cloud.google.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://cloud.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Google Cloud official website">
                                 <img src="https://img.shields.io/badge/ETL-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="ETL">
                             </a>
                         </div>
                     </div>
                     <div class="skill-description">
-                        Experienced in designing and implementing ETL pipelines, data warehousing solutions, and cloud-based data architectures. Proficient with AWS services (Redshift, S3, Lambda), database optimization techniques, data governance frameworks, and automated data workflows for scalable data infrastructure.
+                        Data Pipelines • ETL Processes • Database Optimization • Data Governance
                     </div>
                 </div>
 
-                <!-- Version Control & Development Tools -->
+                <!-- Version Control & Tools -->
                 <div class="skill-category reveal">
                     <h3>Version Control & Development Tools</h3>
                     <div class="skill-badges">
+                        <!-- ⭐ GIT - Edit URL: https://git-scm.com/ -->
                         <div class="skill-badge">
-                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Git official website">
                                 <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ GITHUB - Edit URL: https://github.com/ -->
                         <div class="skill-badge">
-                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub official website">
                                 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ VS CODE - Edit URL: https://code.visualstudio.com/ -->
                         <div class="skill-badge">
-                            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit VS Code official website">
                                 <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ BASH - Edit URL: https://www.gnu.org/software/bash/ -->
                         <div class="skill-badge">
-                            <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" aria-label="Visit Bash official website">
+                                <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash">
+                            </a>
+                        </div>
+                        
+                        <!-- ⭐ JUPYTER - Edit URL: https://jupyter.org/ -->
+                        <div class="skill-badge">
+                            <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer" aria-label="Visit Jupyter official website">
                                 <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter">
                             </a>
                         </div>
+                        
+                        <!-- ⭐ DBEAVER - Edit URL: https://dbeaver.io/ -->
                         <div class="skill-badge">
-                            <a href="https://dbeaver.io/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://dbeaver.io/" target="_blank" rel="noopener noreferrer" aria-label="Visit DBeaver official website">
                                 <img src="https://img.shields.io/badge/DBeaver-382923?style=for-the-badge&logo=dbeaver&logoColor=white" alt="DBeaver">
                             </a>
                         </div>
                     </div>
-                    <div class="skill-description">
-                        Proficient in Git version control workflows, collaborative development using GitHub (pull requests, code reviews, branching strategies), VS Code for efficient coding, Jupyter Notebooks for exploratory analysis and documentation, and DBeaver for database management and SQL development.
-                    </div>
                 </div>
 
-                <!-- Soft Skills & Professional Competencies -->
+                <!-- Soft Skills -->
                 <div class="skill-category reveal">
-                    <h3>Professional Skills & Competencies</h3>
+                    <h3>Professional Skills</h3>
                     <div class="skill-description">
-                        🎯 <strong>Problem-Solving:</strong> Analytical mindset with ability to break down complex business challenges into data-driven solutions<br><br>
-                        💬 <strong>Communication:</strong> Skilled in translating technical concepts for non-technical stakeholders and creating compelling data narratives<br><br>
-                        🤝 <strong>Collaboration:</strong> Proven track record of cross-functional teamwork with engineering, business, and product teams<br><br>
-                        🔄 <strong>Adaptability:</strong> Quick learner who thrives in fast-paced environments and embraces new technologies<br><br>
-                        📚 <strong>Continuous Learning:</strong> Committed to staying current with emerging AI/ML trends, attending webinars, and completing online certifications<br><br>
-                        🧠 <strong>Critical Thinking:</strong> Strong analytical reasoning for hypothesis testing, A/B testing interpretation, and statistical inference<br><br>
-                        📊 <strong>Data Storytelling:</strong> Expert at creating compelling visualizations and presentations that drive business action<br><br>
-                        📈 <strong>Business Acumen:</strong> Understanding of business metrics, KPIs, ROI calculations, and how data insights impact bottom-line results
+                        🎯 Problem-Solving • 💬 Communication • 🤝 Teamwork • 🔄 Adaptability • 📚 Continuous Learning • 🧠 Critical Thinking • 📊 Data Storytelling • 📈 Business Acumen
                     </div>
                 </div>
             </div>
@@ -1162,31 +1157,19 @@
     <!-- Education -->
     <section id="education">
         <div class="container">
-            <div class="section-label reveal">ACADEMIC BACKGROUND</div>
-            <h2 class="section-title reveal">Education & Certifications</h2>
+            <div class="section-label reveal">ACADEMIC</div>
+            <h2 class="section-title reveal">Education</h2>
             
             <div class="education-card reveal">
                 <h3>PG Diploma in Data Science</h3>
-                <p class="education-meta"><span>AnalytixLabs (in collaboration with E&ICT, IIT Guwahati)</span> • Noida, India • 2023 - 2025</p>
-                <p><strong>Comprehensive Curriculum:</strong> Intensive 600+ hour program covering the complete data science ecosystem including Statistical Analysis, Probability Theory, Machine Learning Algorithms (Supervised & Unsupervised Learning), Deep Learning Architectures (Neural Networks, CNN, RNN, LSTM), Natural Language Processing, Time Series Forecasting, Computer Vision, Database Management (SQL, NoSQL), Big Data Technologies, Cloud Computing, and MLOps practices.</p>
-                <p><strong>Key Coursework:</strong> Advanced Python Programming, Data Wrangling with Pandas, Exploratory Data Analysis, Feature Engineering, Model Selection & Evaluation, Hyperparameter Tuning, Ensemble Methods, Deep Learning with TensorFlow/PyTorch, NLP with spaCy & NLTK, Business Intelligence with Power BI & Tableau, SQL for Data Science, Git Version Control, and Industry Capstone Projects.</p>
-                <p><strong>Practical Experience:</strong> Completed 10+ hands-on projects including predictive modeling, sentiment analysis, recommendation systems, image classification, and real-time dashboard development. Gained proficiency in end-to-end ML pipeline development from data collection to model deployment.</p>
+                <p class="education-meta"><span>AnalytixLabs (EICT IIT Guwahati)</span> • Noida, India • 2023 - 2025</p>
+                <p>Deep Learning, Machine Learning, Python, SQL, Microsoft Power BI, Microsoft Excel</p>
             </div>
 
             <div class="education-card reveal">
                 <h3>B.Tech in Electronics & Communication Engineering</h3>
-                <p class="education-meta"><span>Maharaja Agrasen Institute of Technology (GGSIPU)</span> • Delhi, India • 2013 - 2017</p>
-                <p><strong>Core Engineering Foundation:</strong> Comprehensive curriculum in Digital Signal Processing, Communication Systems, Network Theory, Microprocessors & Microcontrollers, Linear Algebra, Probability & Statistics, and Advanced Engineering Mathematics.</p>
-                <p><strong>Analytical Skills Development:</strong> Strong foundation in mathematical modeling, statistical analysis, signal processing, and algorithmic problem-solving that directly translates to data science applications. Developed logical reasoning and quantitative analysis capabilities through rigorous coursework in calculus, differential equations, and statistical inference.</p>
-                <p><strong>Technical Projects:</strong> Completed projects involving data acquisition systems, embedded programming, and statistical analysis of communication networks, building a solid technical foundation for transitioning into data-driven roles.</p>
-            </div>
-
-            <div class="education-card reveal">
-                <h3>Additional Certifications & Learning</h3>
-                <p class="education-meta"><span>Continuous Professional Development</span> • 2023 - Present</p>
-                <p><strong>Online Learning Platforms:</strong> Actively engaged in continuous skill development through platforms like Coursera, edX, DataCamp, and Kaggle. Completed specialized courses in Advanced Machine Learning, Deep Learning Specialization, Natural Language Processing, and MLOps Engineering.</p>
-                <p><strong>Industry Workshops & Webinars:</strong> Regular participant in data science conferences, tech talks, and industry webinars covering emerging technologies like Large Language Models (LLMs), Generative AI, AutoML, Transformer architectures, and Agentic AI systems.</p>
-                <p><strong>Kaggle Competitions:</strong> Active member of the Kaggle community, participating in data science competitions to solve real-world challenges, collaborate with global data scientists, and stay updated with state-of-the-art techniques and best practices.</p>
+                <p class="education-meta"><span>Maharaja Agrasen Institute of Technology, GGSIPU</span> • Delhi, India • 2017</p>
+                <p>Strong foundation in Networks, Communications and Engineering Mathematics (Advanced Statistics)</p>
             </div>
         </div>
     </section>
@@ -1194,8 +1177,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2025 Devanshu Bharti • Data Scientist & ML Engineer • Based in New Delhi/Noida, India</p>
-            <p style="margin-top: 12px; font-size: 0.85rem;">Built with passion for data-driven innovation 💙 | Open to exciting opportunities in Data Science, Machine Learning & AI</p>
+            <p>© 2025 Devanshu Bharti • Based in Noida, India • Built with passion 💙</p>
         </div>
     </footer>
 
@@ -1322,7 +1304,7 @@
             if (e.key === 'Escape' && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
                 mobileMenuToggle.textContent = '☰';
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'false');
                 mobileMenuToggle.focus();
             }
         });
